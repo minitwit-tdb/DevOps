@@ -1,0 +1,3 @@
+# Lets not bloat our source control with compiled files
+__pycache__
+minitwit.pyc
