@@ -51,6 +51,8 @@ In order to run the application use the following commands:
 
 ```yarn watch```
 
+Once this is done you should be able to access the application from ```localhost:3000```
+
 (NB: these commands and more can be found described in the file ```package.json```)
 
 ## Maintaining the application
