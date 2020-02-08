@@ -27,7 +27,7 @@ It is recommended to use the Visual Studio Code along with the Eslint extension.
 
 In order to run this application, the following step should be taken:
 
-* Configure the MariaDB connection by creating a file called ```mariadb.json``` in the source folder (i.e. ```./src/mariadb.json```)
+* Configure the MariaDB connection by creating a file called ```mariadb.json``` in the project source folder (i.e. ```./src/mariadb.json```)
   * This file should resemble the following structure:
     ```js
     {
