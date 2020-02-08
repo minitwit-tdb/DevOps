@@ -1,6 +1,6 @@
 import { handleUncaughtException } from './utils/handleUncaughtException'
 import { timelineRouter } from './routes'
-import { bootstrapDB } from './database'
+import { bootstrapDB, killPool } from './database'
 import { formatDatetime, getGravatarUrl } from './utils'
 
 import express = require('express')
@@ -47,6 +47,7 @@ function configureServer (): express.Express {
   const shutdown = gracefulShutdown(server)
 
   /* eslint-disable @typescript-eslint/no-misused-promises */
+  process.on('SIGTERM', killPool)
   process.on('uncaughtException', async (err): Promise<void> => handleUncaughtException(shutdown, err))
   process.on('unhandledRejection', async (reason): Promise<void> => handleUncaughtException(shutdown, reason))
   /* eslint-enable @typescript-eslint/no-misused-promises */
