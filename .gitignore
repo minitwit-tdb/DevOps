@@ -1,3 +1,4 @@
-# Lets not bloat our source control with compiled files
-__pycache__
-minitwit.pyc
+lib/
+node_modules/
+legacy/
+src/mariadb.json
