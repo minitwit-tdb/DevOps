@@ -1,5 +1,5 @@
 import { getUserBySession, urlTo } from '../utils'
-import { getTweetsForUserId, getLatestTweets, getUserByUsername, isFollowingUser } from '../database'
+import { getTweetsForUserId, getLatestTweets, getUserByUsername, isFollowingUser, getTweetsByUserId } from '../database'
 
 import express = require('express');
 const router = express.Router()
@@ -78,7 +78,7 @@ router.get('/user/:username', async (req, res) => {
 
   const isFollowing = await isFollowingUser(self, user)
 
-  const tweets = await getTweetsForUserId(user.user_id)
+  const tweets = await getTweetsByUserId(user.user_id)
   res.render('templates/timeline.html', {
     tweets,
     urlTo,

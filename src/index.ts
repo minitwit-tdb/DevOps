@@ -1,5 +1,5 @@
 import { handleUncaughtException } from './utils/handleUncaughtException'
-import { timelineRouter } from './routes'
+import { timelineRouter, simulatorRouter } from './routes'
 import { bootstrapDB } from './database'
 import { formatDatetime, getGravatarUrl } from './utils'
 
@@ -9,8 +9,9 @@ import session = require('express-session')
 import nunjucks = require('nunjucks')
 import flash = require('express-flash')
 import cookieParser = require('cookie-parser')
+import bodyParser = require('body-parser')
 
-const PORT = 3000
+const PORT = process.env.PORT || process.env.SIMULATOR ? 5001 : 3000
 
 async function start (): Promise<void> {
   await bootstrapDB()
@@ -22,13 +23,18 @@ async function start (): Promise<void> {
     .addFilter('datetimeformat', formatDatetime)
 
   // Setup routes
-  app.use('/', timelineRouter)
+  if (process.env.SIMULATOR) {
+    app.use('/', simulatorRouter)
+  } else {
+    app.use('/', timelineRouter)
+  }
 }
 
 function configureServer (): express.Express {
   const app = express()
   app.use(express.static('static'))
   app.use(cookieParser())
+  app.use(bodyParser.json())
   app.set('trust proxy', 1)
   app.use(session({
     name: 'app.sid',

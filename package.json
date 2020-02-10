@@ -7,7 +7,8 @@
     "build": "rm -rf lib && npx tsc --build && cp -r static lib/static && cp -r templates lib/templates",
     "start": "cd lib && node ./index.js",
     "watch": "npx nodemon --watch 'src/**/*' --watch 'static/**/*' --watch 'templates/**/*' --ext ts,html,css --exec 'yarn build && yarn start'",
-    "lint": "npx eslint 'src/**/*.{js,jsx,ts,tsx}' --cache --cache-location='./node_modules/.cache'"
+    "lint": "npx eslint 'src/**/*.{js,jsx,ts,tsx}' --cache --cache-location='./node_modules/.cache'",
+    "simulator": "SIMULATOR=true yarn"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
     "express-flash": "^0.0.2",
