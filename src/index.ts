@@ -1,5 +1,5 @@
 import { handleUncaughtException } from './utils/handleUncaughtException'
-import { timelineRouter, simulatorRouter, authenticationRouter } from './routes'
+import { timelineRouter, simulatorRouter, authenticationRouter, followRouter, messageRouter } from './routes'
 import { bootstrapDB, killPool } from './database'
 import { formatDatetime, getGravatarUrl } from './utils'
 
@@ -28,6 +28,8 @@ async function start (): Promise<void> {
   } else {
     app.use('/', timelineRouter)
     app.use('/', authenticationRouter)
+    app.use('/', followRouter)
+    app.use('/', messageRouter)
   }
 }
 

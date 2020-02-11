@@ -17,18 +17,18 @@
         This is you!
       {% elif following %}
         You are currently following this user.
-        <a class=unfollow href="{{ urlTo('unfollow_user', username=profile_user.username)
+        <a class=unfollow href="{{ urlTo(profile_user.username + '/unfollow')
           }}">Unfollow user</a>.
       {% else %}
         You are not yet following this user.
-        <a class=follow href="{{ urlTo('follow_user', username=profile_user.username)
+        <a class=follow href="{{ urlTo(profile_user.username + '/follow')
           }}">Follow user</a>.
       {% endif %}
       </div>
     {% elif endpoint == '/' %}
       <div class=twitbox>
         <h3>What's on your mind {{ self.username }}?</h3>
-        <form action="{{ urlTo('add_message') }}" method=post>
+        <form action="{{ urlTo('addMessage') }}" method=post>
           <p><input type=text name=text size=60><!--
           --><input type=submit value="Share">
         </form>
