@@ -1,3 +1,5 @@
+import { killPool } from '../database'
+
 export async function handleUncaughtException (shutdown: () => Promise<void>, err: unknown): Promise<void> {
   if (err instanceof Error) {
     console.error('Uncaught exception: ', err.message)
@@ -7,5 +9,6 @@ export async function handleUncaughtException (shutdown: () => Promise<void>, er
   }
 
   await shutdown()
+  await killPool()
   process.exit(1)
 }
