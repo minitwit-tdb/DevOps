@@ -1,3 +1,4 @@
 import timelineRouter from './timeline'
+import simulatorRouter from './simulator'
 
-export { timelineRouter }
+export { timelineRouter, simulatorRouter }

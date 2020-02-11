@@ -23,7 +23,7 @@ export async function bootstrapDB (): Promise<void> {
       message_id int auto_increment,
       author_id int not null,
       text text not null,
-      pub_date int,
+      pub_date long,
       flagged int,
       PRIMARY KEY(message_id)
     ); 
