@@ -1,5 +1,5 @@
 import { handleUncaughtException } from './utils/handleUncaughtException'
-import { timelineRouter, simulatorRouter } from './routes'
+import { timelineRouter, simulatorRouter, authenticationRouter } from './routes'
 import { bootstrapDB, killPool } from './database'
 import { formatDatetime, getGravatarUrl } from './utils'
 
@@ -27,6 +27,7 @@ async function start (): Promise<void> {
     app.use('/', simulatorRouter)
   } else {
     app.use('/', timelineRouter)
+    app.use('/', authenticationRouter)
   }
 }
 
@@ -35,6 +36,7 @@ function configureServer (): express.Express {
   app.use(express.static('static'))
   app.use(cookieParser())
   app.use(bodyParser.json())
+  app.use(bodyParser.urlencoded({ extended: true }))
   app.set('trust proxy', 1)
   app.use(session({
     name: 'app.sid',

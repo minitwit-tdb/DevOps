@@ -4,12 +4,12 @@
 <div class=page>
   <h1>MiniTwit</h1>
   <div class=navigation>
-  {% if g.user %}
-    <a href="{{ urlTo('timeline') }}">my timeline</a> |
-    <a href="{{ urlTo('public_timeline') }}">public timeline</a> |
-    <a href="{{ urlTo('logout') }}">sign out [{{ g.user.username }}]</a>
+  {% if self %}
+    <a href="{{ urlTo('') }}">my timeline</a> |
+    <a href="{{ urlTo('public') }}">public timeline</a> |
+    <a href="{{ urlTo('logout') }}">sign out [{{ self.username }}]</a>
   {% else %}
-    <a href="{{ urlTo('public_timeline') }}">public timeline</a> |
+    <a href="{{ urlTo('public') }}">public timeline</a> |
     <a href="{{ urlTo('register') }}">sign up</a> |
     <a href="{{ urlTo('login') }}">sign in</a>
   {% endif %}

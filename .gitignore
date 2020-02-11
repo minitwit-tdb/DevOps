@@ -2,3 +2,4 @@ lib/
 node_modules/
 legacy/
 src/mariadb.json
+yarn-error.log

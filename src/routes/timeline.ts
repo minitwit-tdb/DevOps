@@ -44,26 +44,6 @@ router.get('/public', async (req, res) => {
   })
 })
 
-// TEMPORARY ENDPOINTS START
-router.get('/flash_test', (req, res) => {
-  req.flash('info', 'test')
-  res.redirect(301, '/')
-})
-
-router.get('/set_user', (req, res) => {
-  if (req.session) {
-    req.session.user = {
-      user_id: 1,
-      username: 'lasse',
-      email: 'l',
-      pw_hash: 'not implemented'
-    }
-  }
-
-  res.redirect('/')
-})
-// TEMPORARY ENDPOINTS END
-
 // Display's a users tweets.
 router.get('/user/:username', async (req, res) => {
   const self = getUserBySession(req.session)
