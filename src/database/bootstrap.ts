@@ -1,7 +1,10 @@
 import { getConnection } from './getConnection'
 
 export async function bootstrapDB (): Promise<void> {
-  const userPromise = (await getConnection()).query(`
+  const connection = await getConnection()
+
+  await connection.beginTransaction()
+  await connection.query(`
     create table if not exists user (
       user_id int auto_increment,
       username varchar(255) not null,
@@ -11,14 +14,14 @@ export async function bootstrapDB (): Promise<void> {
     );
   `)
 
-  const followerPromise = (await getConnection()).query(`
+  await connection.query(`
     create table if not exists follower (
       who_id int,
       whom_id int
     ); 
   `)
 
-  const messagePromise = (await getConnection()).query(`
+  await connection.query(`
     create table if not exists message (
       message_id int auto_increment,
       author_id int not null,
@@ -29,5 +32,6 @@ export async function bootstrapDB (): Promise<void> {
     ); 
   `)
 
-  await Promise.all([userPromise, followerPromise, messagePromise])
+  await connection.commit()
+  await connection.end()
 }

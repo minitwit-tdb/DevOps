@@ -4,24 +4,28 @@ services:
   db:
     image: mariadb:10.4.12
     restart: always
-    environment: 
-      MYSQL_ROOT_PASSWORD: "secret"
-      MYSQL_DATABASE: "minitwit"
-      MYSQL_USER: "root"
+    env_file: 
+      - .env
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-      timeout: 20s
-      retries: 10
-    volumes:
-      - ./schemal.sql:/docker-entrypoint-initdb.d/schema.sql
+      timeout: 40s
+      retries: 20
+    volumes: 
+      - ./db:/var/lib/mysql
     ports:
       - 3306:3306
 
   server:
     build:
       context: .
-      target: production
-    volumes:
+      target: dev
+    env_file: 
+      - .env
+    volumes: 
       - .:/usr/app:delegated
     ports:
       - 80:3000
+      - 5001:5001
+    depends_on: 
+      db:
+        condition: service_healthy
