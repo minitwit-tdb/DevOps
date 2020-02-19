@@ -7,9 +7,9 @@ services:
     env_file: 
       - .env
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-      timeout: 40s
-      retries: 20
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-u$MYSQL_USER", "-p$MYSQL_ROOT_PASSWORD"]
+      timeout: 5s
+      retries: 10
     volumes: 
       - ./db:/var/lib/mysql
     ports:
