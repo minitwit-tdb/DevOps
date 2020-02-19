@@ -1,0 +1,41 @@
+version: "2.3"
+
+services:
+  db:
+    image: mariadb:10.4.12
+    restart: always
+    env_file: 
+      - .env
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-u$MYSQL_USER", "-p$MYSQL_ROOT_PASSWORD"]
+      timeout: 5s
+      retries: 10
+    volumes: 
+      - ./db:/var/lib/mysql
+    ports:
+      - 3306:3306
+    networks:
+      - db_network
+
+  server:
+    build:
+      context: .
+      target: dev
+    env_file: 
+      - .env
+    volumes: 
+      - .:/usr/app:delegated
+    ports:
+      - 80:3000
+      - 5001:5001
+    networks:
+      - db_network
+      - public_network
+    depends_on: 
+      db:
+        condition: service_healthy
+
+networks:
+  db_network:
+    internal: true
+  public_network:

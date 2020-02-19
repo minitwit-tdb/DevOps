@@ -1,5 +1,7 @@
 lib/
 node_modules/
 legacy/
+do/
+db/
 src/mariadb.json
 yarn-error.log
