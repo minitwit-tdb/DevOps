@@ -8,7 +8,6 @@
     "start": "cd lib && node ./index.js",
     "watch": "npx nodemon --watch 'src/**/*' --watch 'static/**/*' --watch 'templates/**/*' --ext ts,html,css --exec 'yarn build && yarn start'",
     "lint": "npx eslint 'src/**/*.{js,jsx,ts,tsx}' --cache --cache-location='./node_modules/.cache'",
-    "simulator": "SIMULATOR=true yarn",
     "flag_tool": "cd lib && node ./flagTool.js"
   },
   "repository": {
@@ -34,7 +33,7 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
     "nodemon": "^2.0.2",
-    "typescript": "^3.7.5"
+    "typescript": "3.7.5"
   },
   "dependencies": {
     "body-parser": "^1.19.0",

@@ -1,0 +1,43 @@
+Route: /latest
+Method: GET
+Returns: 
+    No HTTP code?, "latest" as LATEST (int)
+
+
+Route: /register
+Method: POST
+Returns: 
+    400, "status" as 400 and "error_msg" as an error message if no username, email, password or username already exists
+    204, and empty body otherwise
+
+Route: /msgs
+Method: GET
+Returns: 
+    403, "status" as 403 and "error_msg" as an error message if request not from simulator
+    No HTTP code?, messsages from db after filtering
+
+Route: /msgs/<username>
+Method: GET
+Returns: 
+    403, "status" as 403 and "error_msg" as an error message if request not from simulator
+    404, as per flask abort method if current user not in db
+    No HTTP code?, messsages from db after filtering
+
+Route: /msgs/<username>
+Method: POST
+Returns: 
+    Not from sim stuff
+    204, empty body
+
+Route: /fllws/<username>
+Method: GET
+Returns: 
+    404, flask abort if current user not in db
+    404 flask abort, if followed/unfollowed user not in db
+    204, empty body otherwise
+
+Route: /fllws/<username>
+Method: POST
+Returns: 
+    404, flask abort if current user not in db
+    No HTTP code?, "follows" with follower names(?)
