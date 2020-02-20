@@ -1,0 +1,54 @@
+os: linux
+dist: bionic
+
+language: python
+python:
+  - 3.7
+
+services:
+  - docker  # required, but travis uses older version of docker :(
+
+install:
+  - docker --version  # document the version travis is using
+
+stages:
+  - test
+  - build
+  - deploy
+
+jobs:
+  include:
+    - stage: build
+      name: "build and push docker"
+      script:
+        - echo "LOGIN"
+        - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+        - echo "BUILD"
+        - docker build -t $DOCKER_USERNAME/minitwit:latest . -f Dockerfile
+        - echo "PUSH"
+        - docker push $DOCKER_USERNAME/minitwit:latest
+
+    - stage: test
+      name: "API test"
+      install: skip
+      script:
+        - docker build -f ./tests/Dockerfile -t minitwit-tests:latest .
+        - yes | docker-compose up -d
+        - docker run -it --rm --network=minitwit-public minitwit-tests:latest
+
+    - stage: test
+      name: "lint"
+      install: skip
+      script:
+        - docker build --target lint -t minitwit-lint:latest .
+        - docker run -it --rm minitwit-lint:latest
+
+    - stage: deploy
+      name: "deploy new version"
+      if: branch = develop
+      install: skip
+      # -o flag to get around "add ip to known hosts prompt"
+      script: |
+        echo ${do_ssh} | ssh -o "StrictHostKeyChecking no" -i /dev/stdin ${MT_USER}@${MT_SERVER} \
+        "cd /etc/minitwit && \
+        sh ./deploy_minitwit.sh latest"

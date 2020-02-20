@@ -41,3 +41,4 @@ networks:
   db_network:
     internal: true
   public_network:
+    name: "minitwit_public"

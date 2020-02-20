@@ -17,7 +17,6 @@ from datetime import datetime
 from contextlib import closing
 import sqlite3
 
-
 CSV_FILENAME = "./minitwit_scenario.csv"
 USERNAME = "simulator"
 PWD = "super_safe!"
@@ -95,10 +94,12 @@ def get_actions():
                     # This should never happen and can likely be removed to
                     # make parsing for plot generation later easier
                     print("Unknown type found: (" + command + ")")
+                    exit(1)
 
             except Exception as e:
                 print("========================================")
                 print(traceback.format_exc())
+                exit(1)
 
 
 def main(host):
@@ -148,6 +149,7 @@ def main(host):
                             ]
                         )
                     )
+                    exit(1)
 
                 response.close()
 
@@ -182,6 +184,7 @@ def main(host):
                             ]
                         )
                     )
+                    exit(1)
 
                 response.close()
 
@@ -318,6 +321,7 @@ def main(host):
                         ]
                     )
                 )
+                exit(1)
 
         except requests.exceptions.ConnectionError as e:
             ts_str = datetime.strftime(datetime.utcnow(), "%Y-%m-%d %H:%M:%S")
@@ -326,11 +330,13 @@ def main(host):
                     [ts_str, host, str(action["latest"]), "ConnectionError"]
                 )
             )
+            exit(1)
         except requests.exceptions.ReadTimeout as e:
             ts_str = datetime.strftime(datetime.utcnow(), "%Y-%m-%d %H:%M:%S")
             print(
                 ",".join([ts_str, host, str(action["latest"]), "ReadTimeout"])
             )
+            exit(1)
         except Exception as e:
             print("========================================")
             print(traceback.format_exc())
@@ -340,6 +346,7 @@ def main(host):
                     [ts_str, host, str(action["latest"]), type(e).__name__]
                 )
             )
+            exit(1)
 
         sleep(delay / (1000 * 100000))
 
@@ -348,3 +355,4 @@ if __name__ == "__main__":
     host = sys.argv[1]
 
     main(host)
+    exit(0)
