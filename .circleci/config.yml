@@ -7,13 +7,13 @@ jobs:
       - checkout
       - run:
           name: Login to DockerHub
-          command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
+          command: echo $DOCKER_PASSWORD | docker login -u ${DOCKER_USER} --password-stdin
       - run:
           name: Build minitwit docker image
           command: |
             if [ -n "${CIRCLE_TAG}" ]; then
               DOCKER_TAG="$CIRCLE_TAG"
-            elif
+            else
               DOCKER_TAG="latest"
             fi
             docker build -t $DOCKER_USER/minitwit:${DOCKER_TAG} . -f Dockerfile
@@ -22,7 +22,7 @@ jobs:
           command: |
             if [ -n "${CIRCLE_TAG}" ]; then
               DOCKER_TAG="$CIRCLE_TAG"
-            elif
+            else
               DOCKER_TAG="latest"
             fi
             docker push $DOCKER_USER/minitwit:${DOCKER_TAG}
