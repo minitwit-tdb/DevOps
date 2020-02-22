@@ -1,4 +1,5 @@
 FROM node:13.8.0-alpine3.11 as dev
+RUN apk add --no-cache curl
 
 WORKDIR /usr/app
 

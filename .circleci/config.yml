@@ -1,5 +1,28 @@
 version: 2
 jobs:
+  lint:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - run:
+          name: Linting
+          command: yarn lint
+  api_test:
+    docker:
+      - image: circleci/python:3.8
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Starting application and running tests
+          command: |
+            cd tests
+            docker-compose run tests
+            docker-compose down
   build:
     docker:
       - image: circleci/node:13.8.0
@@ -27,30 +50,12 @@ jobs:
               DOCKER_TAG="latest"
             fi
             docker push $DOCKER_USER/minitwit:${DOCKER_TAG}
-  lint:
+  deploy:
     docker:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - run:
-          name: Install dependencies
-          command: yarn install
-      - run:
-          name: Linting
-          command: yarn lint
-  api_test:
-    docker:
-      - image: circleci/python:3.8
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run:
-          name: Starting application and running tests
-          command: |
-            docker-compose up -d
-            cd tests
-            python SimulatorTests.py "http://localhost:5001"
-            docker-compose down
+
 
 workflows:
   version: 2
