@@ -55,9 +55,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "23:73:d7:3e:91:f3:b7:15:0e:de:3b:d9:a0:3c:24:a1"
+      - add_ssh_keys
       - run:
           name: Deploying on Digital Ocean droplet
           command: |
@@ -66,7 +64,7 @@ jobs:
             else
               DOCKER_TAG="latest"
             fi
-            ssh $SSH_USER@$SSH_HOST "cd /etc/minitwit && touch .hello"
+            ssh $SSH_USER@$SSH_HOST -o StrictHostKeyChecking=no "cd /etc/minitwit && touch .hello"
 
 
 workflows:
