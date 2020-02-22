@@ -77,34 +77,27 @@ workflows:
     jobs:
       - lint
       - api_test
+
   deploy:
     jobs:
       - api_test:
           filters:
             branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
+              only: master
       - lint:
           filters:
             branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
+              only: master
       - build:
           requires:
             - lint
             - api_test
           filters:
             branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
+              only: master
       - deploy:
           requires:
             - build
           filters:
             branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
+              only: master
