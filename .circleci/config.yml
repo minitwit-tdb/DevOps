@@ -43,6 +43,7 @@ jobs:
       - image: circleci/python:3.8
     steps:
       - checkout
+      - setup_remote_docker
       - run:
           name: Starting application
           command: docker-compose up -d
@@ -59,12 +60,15 @@ workflows:
   version: 2
   commit:
     jobs:
-      - build
       - lint
       - api_test
   deploy:
     jobs:
-      - lint
+      - lint:
+          branches:
+            ignore: /.*/
+          tags:
+            only: /^v.*/
       - build:
           requires:
             - lint
