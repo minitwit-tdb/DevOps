@@ -6,26 +6,26 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Login to DockerHub
-        command: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+          name: Login to DockerHub
+          command: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
       - run:
-        name: Build minitwit docker image
-        command: |
-          if [ -n "${CIRCLE_TAG}" ]; then
-            DOCKER_TAG="$CIRCLE_TAG"
-          elif
-            DOCKER_TAG="latest"
-          fi
-          docker build -t $DOCKER_USERNAME/minitwit:${DOCKER_TAG} . -f Dockerfile
+          name: Build minitwit docker image
+          command: |
+            if [ -n "${CIRCLE_TAG}" ]; then
+              DOCKER_TAG="$CIRCLE_TAG"
+            elif
+              DOCKER_TAG="latest"
+            fi
+            docker build -t $DOCKER_USERNAME/minitwit:${DOCKER_TAG} . -f Dockerfile
       - run:
-        name: Push to DockerHub
-        command: |
-          if [ -n "${CIRCLE_TAG}" ]; then
-            DOCKER_TAG="$CIRCLE_TAG"
-          elif
-            DOCKER_TAG="latest"
-          fi
-          docker push $DOCKER_USERNAME/minitwit:${DOCKER_TAG}
+          name: Push to DockerHub
+          command: |
+            if [ -n "${CIRCLE_TAG}" ]; then
+              DOCKER_TAG="$CIRCLE_TAG"
+            elif
+              DOCKER_TAG="latest"
+            fi
+            docker push $DOCKER_USERNAME/minitwit:${DOCKER_TAG}
 
 workflows:
   version: 2
@@ -36,5 +36,7 @@ workflows:
     jobs:
       - build:
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only: /^v.*/
