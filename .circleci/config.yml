@@ -45,16 +45,12 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: Starting application
-          command: docker-compose up -d
-      - run:
-          name: Running API tests
+          name: Starting application and running tests
           command: |
+            docker-compose up -d
             cd tests
             python SimulatorTests.py "http://localhost:5001"
-      - run:
-          name: Stopping application
-          command: docker-compose down
+            docker-compose down
 
 workflows:
   version: 2
