@@ -82,29 +82,21 @@ workflows:
       - api_test:
           filters:
             branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
+              only: develop
       - lint:
           filters:
             branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
+              only: develop
       - build:
           requires:
             - lint
             - api_test
           filters:
             branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
+              only: develop
       - deploy:
           requires:
             - build
           filters:
             branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
+              only: develop
