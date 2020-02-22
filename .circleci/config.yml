@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Login to DockerHub
-          command: docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+          command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
       - run:
           name: Build minitwit docker image
           command: |
@@ -16,7 +16,7 @@ jobs:
             elif
               DOCKER_TAG="latest"
             fi
-            docker build -t $DOCKER_USERNAME/minitwit:${DOCKER_TAG} . -f Dockerfile
+            docker build -t $DOCKER_USER/minitwit:${DOCKER_TAG} . -f Dockerfile
       - run:
           name: Push to DockerHub
           command: |
@@ -25,7 +25,7 @@ jobs:
             elif
               DOCKER_TAG="latest"
             fi
-            docker push $DOCKER_USERNAME/minitwit:${DOCKER_TAG}
+            docker push $DOCKER_USER/minitwit:${DOCKER_TAG}
 
 workflows:
   version: 2
