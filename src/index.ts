@@ -1,5 +1,5 @@
 import { handleUncaughtException } from './utils/handleUncaughtException'
-import { timelineRouter, simulatorRouter, authenticationRouter, followRouter, messageRouter } from './routes'
+import { timelineRouter, simulatorRouter, authenticationRouter, followRouter, messageRouter, healthcheckRouter } from './routes'
 import { bootstrapDB, killPool } from './database'
 import { formatDatetime, getGravatarUrl } from './utils'
 
@@ -25,6 +25,7 @@ async function start (): Promise<void> {
     .addFilter('datetimeformat', formatDatetime)
 
   // Setup routes
+  app.use('/', healthcheckRouter)
   app.use('/', timelineRouter)
   app.use('/', authenticationRouter)
   app.use('/', followRouter)
@@ -37,6 +38,7 @@ async function startAPI (): Promise<void> {
 
   const app = configureServer(API_PORT)
 
+  app.use('/', healthcheckRouter)
   app.use('/', simulatorRouter)
 }
 
