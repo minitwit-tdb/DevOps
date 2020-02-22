@@ -27,12 +27,24 @@ jobs:
               DOCKER_TAG="latest"
             fi
             docker push $DOCKER_USER/minitwit:${DOCKER_TAG}
+    lint:
+      docker:
+        - image: circleci/node:13.8.0
+      steps:
+        - checkout
+        - run:
+            name: Install dependencies
+            command: yarn install
+        - run:
+            name: Linting
+            command: yarn lint
 
 workflows:
   version: 2
   commit:
     jobs:
       - build
+      - lint
   deploy:
     jobs:
       - build:
