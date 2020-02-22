@@ -75,9 +75,16 @@ workflows:
   version: 2
   commit:
     jobs:
-      - deploy
+      - lint
+      - api_test
   deploy:
     jobs:
+      - api_test:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
       - lint:
           filters:
             branches:
@@ -87,6 +94,15 @@ workflows:
       - build:
           requires:
             - lint
+            - api_test
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
+      - deploy:
+          requires:
+            - build
           filters:
             branches:
               ignore: /.*/
