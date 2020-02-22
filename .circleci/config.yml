@@ -1,0 +1,110 @@
+version: 2
+jobs:
+  lint:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - run:
+          name: Linting
+          command: yarn lint
+  api_test:
+    docker:
+      - image: circleci/python:3.8
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Starting application and running tests
+          command: |
+            cd tests
+            docker-compose run tests
+            docker-compose down
+  build:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Login to DockerHub
+          command: echo $DOCKER_PASSWORD | docker login -u ${DOCKER_USER} --password-stdin
+      - run:
+          name: Build minitwit docker image
+          command: |
+            if [ -n "${CIRCLE_TAG}" ]; then
+              DOCKER_TAG="$CIRCLE_TAG"
+            else
+              DOCKER_TAG="latest"
+            fi
+            docker build -t $DOCKER_USER/minitwit:${DOCKER_TAG} . -f Dockerfile
+      - run:
+          name: Push to DockerHub
+          command: |
+            if [ -n "${CIRCLE_TAG}" ]; then
+              DOCKER_TAG="$CIRCLE_TAG"
+            else
+              DOCKER_TAG="latest"
+            fi
+            docker push $DOCKER_USER/minitwit:${DOCKER_TAG}
+  deploy:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - add_ssh_keys
+      - run:
+          name: Deploying on Digital Ocean droplet
+          command: |
+            if [ -n "${CIRCLE_TAG}" ]; then
+              DOCKER_TAG="$CIRCLE_TAG"
+            else
+              DOCKER_TAG="latest"
+            fi
+            ssh $SSH_USER@$SSH_HOST -o StrictHostKeyChecking=no "
+              cd /etc/minitwit
+              sh ./deploy_minitwit.sh ${DOCKER_TAG} ${DOCKER_USER} ${DOCKER_PASSWORD}
+              exit
+            "
+
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - lint
+      - api_test
+  deploy:
+    jobs:
+      - api_test:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
+      - lint:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
+      - build:
+          requires:
+            - lint
+            - api_test
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/

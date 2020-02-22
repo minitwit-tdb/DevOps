@@ -32,7 +32,7 @@ services:
       - 5001:5001
     networks:
       - db_network
-      - public_network
+      - main
     depends_on: 
       db:
         condition: service_healthy
@@ -40,5 +40,5 @@ services:
 networks:
   db_network:
     internal: true
-  public_network:
+  main:
     name: "minitwit_public"

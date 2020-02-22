@@ -105,6 +105,8 @@ def get_actions():
 def main(host):
     for action, delay in get_actions():
         try:
+            print(action)
+
             # SWITCH ON TYPE
             command = action["post_type"]
             reponse = None
