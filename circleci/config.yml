@@ -1,0 +1,28 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run:
+        name: Login to DockerHub
+        command: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+      - run:
+        name: Build minitwit docker image
+        command: docker build -t $DOCKER_USERNAME/minitwit:latest . -f Dockerfile
+      -run:
+        name: Push to DockerHub
+        command: docker push $DOCKER_USERNAME/minitwit:latest
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - build
+  deploy:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /^v.*/
