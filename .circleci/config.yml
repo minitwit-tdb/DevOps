@@ -27,17 +27,33 @@ jobs:
               DOCKER_TAG="latest"
             fi
             docker push $DOCKER_USER/minitwit:${DOCKER_TAG}
-    lint:
-      docker:
-        - image: circleci/node:13.8.0
-      steps:
-        - checkout
-        - run:
-            name: Install dependencies
-            command: yarn install
-        - run:
-            name: Linting
-            command: yarn lint
+  lint:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - run:
+          name: Linting
+          command: yarn lint
+  api_test:
+    docker:
+      - image: circleci/python:3.8
+    steps:
+      - checkout
+      - run:
+          name: Starting application
+          command: docker-compose up -d
+      - run:
+          name: Running API tests
+          command: |
+            cd tests
+            python SimulatorTests.py "http://localhost:5001"
+      - run:
+          name: Stopping application
+          command: docker-compose down
 
 workflows:
   version: 2
@@ -45,9 +61,13 @@ workflows:
     jobs:
       - build
       - lint
+      - api_test
   deploy:
     jobs:
+      - lint
       - build:
+          requires:
+            - lint
           filters:
             branches:
               ignore: /.*/
