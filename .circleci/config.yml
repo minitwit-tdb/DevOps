@@ -55,14 +55,26 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
+      - run:
+          name: Deploying on Digital Ocean droplet
+          command: |
+            if [ -n "${CIRCLE_TAG}" ]; then
+              DOCKER_TAG="$CIRCLE_TAG"
+            else
+              DOCKER_TAG="latest"
+            fi
+            ssh $SSH_USER@$SSH_HOST "
+              cd /etc/minitwit
+              sh ./deploy_minitwit.sh ${DOCKER_TAG} ${DOCKER_USER} ${DOCKER_PASSWORD}
+              exit
+            "
 
 
 workflows:
   version: 2
   commit:
     jobs:
-      - lint
-      - api_test
+      - deploy
   deploy:
     jobs:
       - lint:
