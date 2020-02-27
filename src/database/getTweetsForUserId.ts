@@ -1,22 +1,24 @@
-import { getConnection } from './getConnection'
 import { PER_PAGE } from '../config'
-import { IMessageModel } from '../models'
+import { IMessageModel, User, Message, Follower, IFollower } from '../models'
+import Sequelize = require('sequelize')
 
-export async function getTweetsForUserId (userId: number): Promise<IMessageModel[]> {
-  const connection = await getConnection()
+export async function getTweetsForUserId (userId: number): Promise<Array<Message & IMessageModel>> {
+  const followers = await Follower.findAll({
+    where: {
+      who_id: userId
+    }
+  })
 
-  const res = await connection.query(`
-    SELECT user.username, user.email, message.* FROM user, message
-    WHERE message.flagged = 0 
-      AND message.author_id = user.user_id
-      AND (
-        user.user_id = ?
-        OR user.user_id in (select whom_id from follower where who_id = ?)
-      )
-    ORDER BY message.pub_date desc limit ?
-  `, [userId, userId, PER_PAGE])
+  const res = await Message.findAll({
+    order: [['pub_date', 'DESC']],
+    limit: PER_PAGE,
+    where: {
+      flagged: false,
+      author_id: '$User.user_id$',
+      [Sequelize.Op.or]: [{ '$User.user_id': userId }, { '$User.user_id': { [Sequelize.Op.in]: followers.map((follower) => (follower as unknown as IFollower).whom_id) } }]
+    },
+    include: [{ model: User, as: 'User' }]
+  })
 
-  await connection.end()
-
-  return res
+  return res as Array<Message & IMessageModel>
 }

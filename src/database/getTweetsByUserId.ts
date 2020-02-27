@@ -25,6 +25,5 @@ export async function getTweetsByUserId (userId: number, limit: number = PER_PAG
 
   // delete res.meta
 
-  return res
-    .map((entity) => entity.get({ plain: true }) as (IMessageModel & IUserModel))
+  return res as unknown as Array<IMessageModel & IUserModel>
 }
