@@ -10,5 +10,5 @@ export async function initDB (): Promise<void> {
 
   const sequelize = await getSequelize()
 
-  await sequelize.sync({ force: true })
+  await sequelize.sync()
 }

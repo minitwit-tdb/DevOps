@@ -1,6 +1,4 @@
 import { getSequelize } from '../database'
-import { Message } from './MessageModel'
-import { Follower } from './FollowerModel'
 import Sequelize = require('sequelize')
 
 export class User extends Sequelize.Model {

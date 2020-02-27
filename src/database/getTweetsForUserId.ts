@@ -14,7 +14,6 @@ export async function getTweetsForUserId (userId: number): Promise<Array<Message
     limit: PER_PAGE,
     where: {
       flagged: false,
-      author_id: '$User.user_id$',
       [Sequelize.Op.or]: [{ '$User.user_id$': userId }, { '$User.user_id$': { [Sequelize.Op.in]: followers.map((follower) => follower.whom_id) } }]
     },
     include: [{ model: User, as: 'User' }]

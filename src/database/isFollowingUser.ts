@@ -5,12 +5,12 @@ export async function isFollowingUser (self?: User, user?: User): Promise<boolea
     return false
   }
 
-  await Follower.findOne({
+  const res = await Follower.findOne({
     where: {
       who_id: self.user_id,
       whom_id: user.user_id
     }
   })
 
-  return true
+  return !!res
 }

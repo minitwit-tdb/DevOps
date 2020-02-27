@@ -7,8 +7,6 @@ export async function getSequelize (): Promise<Sequelize.Sequelize> {
     try {
       const fallback = await require('../../mariadb.json')
 
-      console.log(fallback, process.env.MYSQL_DATABASE)
-
       sequelize = new Sequelize.Sequelize(
         process.env.MYSQL_DATABASE || fallback.database,
         process.env.MYSQL_USER || fallback.user,
@@ -26,8 +24,6 @@ export async function getSequelize (): Promise<Sequelize.Sequelize> {
         }
       )
     } catch (err) {
-      console.log(process.env.MYSQL_HOST)
-
       // In case we cannot find our fallback file, then simply attempt to login
       // to mariaDB using environment variables.
       sequelize = new Sequelize.Sequelize(

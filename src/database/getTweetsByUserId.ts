@@ -7,7 +7,6 @@ export async function getTweetsByUserId (userId: number, limit: number = PER_PAG
     limit,
     where: {
       flagged: false,
-      author_id: '$User.user_id$',
       '$User.user_id$': userId
     },
     include: [{ model: User, as: 'User' }]

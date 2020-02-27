@@ -74,7 +74,7 @@ router.get('/msgs', async (req, res) => {
   res.json(tweets.map((tweet) => ({
     content: tweet.text,
     pub_date: tweet.pub_date,
-    user: tweet.username
+    user: tweet.User.username
   })))
 })
 

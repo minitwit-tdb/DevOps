@@ -8,6 +8,7 @@ export class Message extends Sequelize.Model {
   public text!: string
   public pub_date!: string
   public flagged!: boolean
+  public User!: User
 }
 
 export async function initMessage (): Promise<void> {
@@ -21,5 +22,5 @@ export async function initMessage (): Promise<void> {
     flagged: { type: Sequelize.BOOLEAN, defaultValue: false }
   }, { sequelize, modelName: 'Message' })
 
-  Message.belongsTo(User, { as: 'User' })
+  Message.belongsTo(User, { foreignKey: 'author_id' })
 }
