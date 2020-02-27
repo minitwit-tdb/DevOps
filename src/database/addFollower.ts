@@ -1,4 +1,3 @@
-import './models'
 import { Follower } from '../models'
 
 export async function addFollower (whoId: number, whomId: number): Promise<void> {

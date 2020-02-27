@@ -1,4 +1,6 @@
 import { getSequelize } from '../database'
+import { Message } from './MessageModel'
+import { Follower } from './FollowerModel'
 import Sequelize = require('sequelize')
 
 export class User extends Sequelize.Model {
@@ -15,6 +17,6 @@ export async function initUser (): Promise<void> {
     user_id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
     username: Sequelize.STRING,
     email: Sequelize.STRING,
-    pw_hash: Sequelize.DATE
-  }, { sequelize, modelName: 'user' })
+    pw_hash: Sequelize.STRING
+  }, { sequelize, modelName: 'User' })
 }

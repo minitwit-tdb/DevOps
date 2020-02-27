@@ -1,4 +1,4 @@
-import { getSequelize, killPool } from './database'
+import { killPool } from './database'
 import { Message, initDB } from './models'
 import sequelize = require('sequelize')
 
@@ -30,23 +30,19 @@ async function dumpTweets (): Promise<void> {
 }
 
 async function flagTweets (ids: string[]): Promise<void> {
-  const connection = await getConnection()
-
   const messages = await Message.findAll({
     where: {
       message_id: { [sequelize.Op.in]: ids }
     }
   })
 
+  const updatePromises: Array<Promise<Message>> = []
+
   messages.forEach((message) => {
-    message.update({ flagged: true })
+    updatePromises.push(message.update({ flagged: true }))
   })
 
-  await connection.query(`
-    UPDATE message SET flagged=1 WHERE message_id IN (?);
-  `, [ids.join(',')])
-
-  await connection.end()
+  await Promise.all(updatePromises)
 }
 
 function displayHelp (): void {

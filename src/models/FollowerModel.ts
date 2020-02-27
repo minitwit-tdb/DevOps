@@ -13,5 +13,5 @@ export async function initFollower (): Promise<void> {
   Follower.init({
     who_id: { type: Sequelize.INTEGER, references: { model: User, key: 'user_id' } },
     whom_id: { type: Sequelize.INTEGER, references: { model: User, key: 'user_id' } }
-  }, { sequelize, modelName: 'follower' })
+  }, { sequelize, modelName: 'Follower' })
 }

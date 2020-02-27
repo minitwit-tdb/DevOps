@@ -12,5 +12,7 @@ export async function getLatestTweets (limit: number = PER_PAGE): Promise<Array<
     include: [{ model: User, as: 'User' }]
   })
 
+  console.log('HELLO!', res)
+
   return res as unknown as Array<Message & User>
 }

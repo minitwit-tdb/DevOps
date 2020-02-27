@@ -1,6 +1,6 @@
-import { Follower, IUserModel } from '../models'
+import { Follower, User } from '../models'
 
-export async function isFollowingUser (self?: IUserModel, user?: IUserModel): Promise<boolean> {
+export async function isFollowingUser (self?: User, user?: User): Promise<boolean> {
   if (!self || !self.user_id || !user || !user.user_id) {
     return false
   }

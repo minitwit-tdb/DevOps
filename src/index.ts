@@ -1,6 +1,6 @@
 import { handleUncaughtException } from './utils/handleUncaughtException'
 import { timelineRouter, simulatorRouter, authenticationRouter, followRouter, messageRouter, healthcheckRouter } from './routes'
-import { bootstrapDB, killPool } from './database'
+import { killPool } from './database'
 import { formatDatetime, getGravatarUrl } from './utils'
 import { initDB } from './models'
 

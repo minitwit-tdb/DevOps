@@ -7,6 +7,7 @@ export class Message extends Sequelize.Model {
   public author_id!: string
   public text!: string
   public pub_date!: string
+  public flagged!: boolean
 }
 
 export async function initMessage (): Promise<void> {
@@ -16,6 +17,9 @@ export async function initMessage (): Promise<void> {
     message_id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
     author_id: { type: Sequelize.INTEGER, references: { model: User, key: 'user_id' } },
     text: Sequelize.STRING,
-    pub_date: Sequelize.DATE
-  }, { sequelize, modelName: 'message' })
+    pub_date: Sequelize.BIGINT,
+    flagged: { type: Sequelize.BOOLEAN, defaultValue: false }
+  }, { sequelize, modelName: 'Message' })
+
+  Message.belongsTo(User, { as: 'User' })
 }
