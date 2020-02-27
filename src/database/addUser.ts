@@ -1,17 +1,10 @@
-import { getConnection } from './getConnection'
 import { generatePasswordHash } from '../utils'
+import { User } from '../models'
 
-export async function addUser (username: string, email: string, pwd: string): Promise<boolean> {
-  const connection = await getConnection()
-
-  const res = await connection.query(`
-    INSERT INTO user
-      (username, email, pw_hash)
-    VALUES
-      (?, ?, ?);
-  `, [username, email, generatePasswordHash(pwd)])
-
-  await connection.end()
-
-  return res
+export async function addUser (username: string, email: string, pwd: string): Promise<void> {
+  await User.create({
+    username,
+    email,
+    pw_hash: generatePasswordHash(pwd)
+  })
 }

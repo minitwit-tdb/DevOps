@@ -33,7 +33,8 @@ router.get('/', async (req, res) => {
 // Displays the latest messages of all users.
 router.get('/public', async (req, res) => {
   const self = getUserBySession(req.session)
-  const tweets = await getLatestTweets()
+  const tweets = (await getLatestTweets())
+    .map((tweet) => tweet.get({ plain: true }))
 
   res.render('templates/timeline.html', {
     tweets,
