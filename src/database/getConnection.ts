@@ -1,33 +1,39 @@
-import mariadb = require('mariadb');
+import Sequelize = require('sequelize');
 
-let pool: mariadb.Pool
+let sequelize: Sequelize.Sequelize
 
-export async function getConnection (): Promise<mariadb.Connection> {
-  if (!pool) {
+export async function getSequelize (): Promise<Sequelize.Sequelize> {
+  if (!sequelize) {
     try {
       const fallback = await require('../mariadb.json')
 
-      pool = mariadb.createPool({
-        host: process.env.MYSQL_HOST || fallback.host,
-        user: process.env.MYSQL_USER || fallback.user,
-        password: process.env.MYSQL_ROOT_PASSWORD || fallback.password,
-        database: process.env.MYSQL_DATABASE || fallback.database
-      })
+      sequelize = new Sequelize.Sequelize(
+        process.env.MYSQL_DATABASE || fallback.database,
+        process.env.MYSQL_ROOT_PASSWORD || fallback.password,
+        process.env.MYSQL_ROOT_PASSWORD || fallback.password,
+        {
+          host: process.env.MYSQL_HOST || fallback.host,
+          dialect: 'mariadb'
+        }
+      )
     } catch {
       // In case we cannot find our fallback file, then simply attempt to login
       // to mariaDB using environment variables.
-      pool = mariadb.createPool({
-        host: process.env.MYSQL_HOST,
-        user: process.env.MYSQL_USER,
-        password: process.env.MYSQL_ROOT_PASSWORD,
-        database: process.env.MYSQL_DATABASE
-      })
+      sequelize = new Sequelize.Sequelize(
+        String(process.env.MYSQL_DATABASE),
+        String(process.env.MYSQL_ROOT_PASSWORD),
+        String(process.env.MYSQL_ROOT_PASSWORD),
+        {
+          host: process.env.MYSQL_HOST,
+          dialect: 'mariadb'
+        }
+      )
     }
   }
 
-  return pool.getConnection()
+  return sequelize
 }
 
 export async function killPool (): Promise<void> {
-  await pool.end()
+  await sequelize.close()
 }

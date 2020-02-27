@@ -1,19 +1,17 @@
-import { getConnection } from './getConnection'
-import { IUserModel } from '../models'
+import { IUserModel, User } from '../models'
 
 export async function getUserByUsername (username?: string): Promise<IUserModel | undefined> {
   if (!username) {
     return undefined
   }
 
-  const connection = await getConnection()
+  const user = await User.findOne({
+    where: {
+      username
+    }
+  })
 
-  const res = await connection.query(`
-    SELECT * FROM user
-    WHERE user.username = ?
-  `, [username])
-
-  await connection.end()
-
-  return res[0] || undefined
+  if (user) {
+    return user.get({ plain: true }) as IUserModel
+  }
 }

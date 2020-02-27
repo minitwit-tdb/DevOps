@@ -2,6 +2,7 @@ import { handleUncaughtException } from './utils/handleUncaughtException'
 import { timelineRouter, simulatorRouter, authenticationRouter, followRouter, messageRouter, healthcheckRouter } from './routes'
 import { bootstrapDB, killPool } from './database'
 import { formatDatetime, getGravatarUrl } from './utils'
+import { initDB } from './models'
 
 import express = require('express')
 import gracefulShutdown = require('http-graceful-shutdown')
@@ -16,7 +17,7 @@ const API_PORT = Number(process.env.API_PORT || 5001)
 
 async function start (): Promise<void> {
   console.log(`Starting application on port ${PORT}`)
-  await bootstrapDB()
+  await initDB()
 
   const app = configureServer(PORT)
 
@@ -34,7 +35,7 @@ async function start (): Promise<void> {
 
 async function startAPI (): Promise<void> {
   console.log(`Starting API on port ${API_PORT}`)
-  await bootstrapDB()
+  await initDB()
 
   const app = configureServer(API_PORT)
 
