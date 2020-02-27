@@ -1,6 +1,6 @@
-import { IUserModel, User } from '../models'
+import { User } from '../models'
 
-export async function getUserByUsername (username?: string): Promise<IUserModel | undefined> {
+export async function getUserByUsername (username?: string): Promise<User | undefined> {
   if (!username) {
     return undefined
   }
@@ -12,6 +12,6 @@ export async function getUserByUsername (username?: string): Promise<IUserModel 
   })
 
   if (user) {
-    return user.get({ plain: true }) as IUserModel
+    return user
   }
 }

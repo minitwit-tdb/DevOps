@@ -2,12 +2,10 @@ import { getSequelize } from '../database'
 import { User } from './UserModel'
 import Sequelize = require('sequelize')
 
-export interface IFollower {
-  who_id: number
-  whom_id: number
+export class Follower extends Sequelize.Model {
+  public who_id!: number
+  public whom_id!: number
 }
-
-export class Follower extends Sequelize.Model { }
 
 export async function initFollower (): Promise<void> {
   const sequelize = await getSequelize()

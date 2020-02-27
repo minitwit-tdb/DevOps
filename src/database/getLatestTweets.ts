@@ -1,20 +1,16 @@
-import { getConnection } from './getConnection'
 import { PER_PAGE } from '../config'
-import { IMessageModel } from '../models'
+import { Message, User } from '../models'
 
-export async function getLatestTweets (limit: number = PER_PAGE): Promise<IMessageModel[]> {
-  const connection = await getConnection()
+export async function getLatestTweets (limit: number = PER_PAGE): Promise<Array<Message & User>> {
+  const res = await Message.findAll({
+    order: [['pub_date', 'DESC']],
+    limit,
+    where: {
+      flagged: false,
+      author_id: '$User.user_id$'
+    },
+    include: [{ model: User, as: 'User' }]
+  })
 
-  const res = await connection.query(`
-    SELECT user.username, user.email, message.* FROM user, message
-    WHERE message.flagged = 0 
-      AND message.author_id = user.user_id
-    ORDER BY message.pub_date desc limit ?
-  `, [limit])
-
-  await connection.end()
-
-  delete res.meta
-
-  return res
+  return res as unknown as Array<Message & User>
 }

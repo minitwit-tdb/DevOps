@@ -1,4 +1,4 @@
-export * from './getConnection'
+export * from './getSequelize'
 export * from './getTweetsForUserId'
 export * from './bootstrap'
 export * from './getLatestTweets'

@@ -2,14 +2,12 @@ import { getSequelize } from '../database'
 import { User } from './UserModel'
 import Sequelize = require('sequelize')
 
-export interface IMessageModel {
-  message_id: string
-  author_id: string
-  text: string
-  pub_date: string
+export class Message extends Sequelize.Model {
+  public message_id!: string
+  public author_id!: string
+  public text!: string
+  public pub_date!: string
 }
-
-export class Message extends Sequelize.Model {}
 
 export async function initMessage (): Promise<void> {
   const sequelize = await getSequelize()

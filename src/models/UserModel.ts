@@ -1,17 +1,11 @@
 import { getSequelize } from '../database'
 import Sequelize = require('sequelize')
 
-export interface IUserModel {
-  user_id: number
-  username: string
-  email: string
-  pw_hash: string
-}
-
 export class User extends Sequelize.Model {
-  public getTyped (): IUserModel {
-    return this.get() as IUserModel
-  }
+  public user_id!: number
+  public username!: string
+  public email!: string
+  public pw_hash!: string
 }
 
 export async function initUser (): Promise<void> {
