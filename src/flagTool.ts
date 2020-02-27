@@ -1,7 +1,11 @@
-import { getConnection, killPool } from './database'
+import { killPool } from './database'
+import { Message, initDB } from './models'
+import sequelize = require('sequelize')
 
 async function flagTool (): Promise<void> {
   const action = process.argv[2]
+
+  await initDB()
 
   switch (action) {
     case '-h':
@@ -20,26 +24,25 @@ async function flagTool (): Promise<void> {
 }
 
 async function dumpTweets (): Promise<void> {
-  const connection = await getConnection()
+  const messages = await Message.findAll()
 
-  const res = await connection.query(`
-    SELECT * FROM message;
-  `)
-  delete res.meta
-
-  console.log(res)
-
-  await connection.end()
+  console.log(messages.map((message) => message.get({ plain: true })))
 }
 
 async function flagTweets (ids: string[]): Promise<void> {
-  const connection = await getConnection()
+  const messages = await Message.findAll({
+    where: {
+      message_id: { [sequelize.Op.in]: ids }
+    }
+  })
 
-  await connection.query(`
-    UPDATE message SET flagged=1 WHERE message_id IN (?);
-  `, [ids.join(',')])
+  const updatePromises: Array<Promise<Message>> = []
 
-  await connection.end()
+  messages.forEach((message) => {
+    updatePromises.push(message.update({ flagged: true }))
+  })
+
+  await Promise.all(updatePromises)
 }
 
 function displayHelp (): void {
