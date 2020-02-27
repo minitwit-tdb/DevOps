@@ -1,6 +1,7 @@
-import { getConnection } from './getConnection'
+// import { getConnection } from './getConnection'
 import { PER_PAGE } from '../config'
-
+import { Follower, User } from '../models'
+/*
 export async function getFollowersForUserId (userId: number, limit: number = PER_PAGE): Promise<Array<{ username: string}>> {
   const connection = await getConnection()
 
@@ -13,5 +14,18 @@ export async function getFollowersForUserId (userId: number, limit: number = PER
 
   await connection.end()
 
+  return res
+}
+*/
+
+export async function getFollowersForUserId (userId: number, limit: number = PER_PAGE): Promise<User[]> {
+  const res = await User.findAll({
+    attributes: ['username'],
+    where: { user_id: userId },
+    include: [{
+      model: Follower,
+      where: { who_id: userId }
+    }]
+  })
   return res
 }
