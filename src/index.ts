@@ -1,5 +1,5 @@
 import { handleUncaughtException } from './utils/handleUncaughtException'
-import { timelineRouter, simulatorRouter, authenticationRouter, followRouter, messageRouter, healthcheckRouter } from './routes'
+import { timelineRouter, simulatorRouter, authenticationRouter, followRouter, messageRouter, healthcheckRouter, metricRouter } from './routes'
 import { killPool } from './database'
 import { formatDatetime, getGravatarUrl } from './utils'
 import { initDB } from './models'
@@ -41,6 +41,7 @@ async function startAPI (): Promise<void> {
 
   app.use('/', healthcheckRouter)
   app.use('/', simulatorRouter)
+  app.use('/', metricRouter)
 }
 
 function configureServer (port: number): express.Express {

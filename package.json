@@ -45,6 +45,7 @@
     "http-graceful-shutdown": "^2.3.2",
     "mariadb": "^2.2.0",
     "nunjucks": "^3.2.0",
+    "prom-client": "^12.0.0",
     "sequelize": "^5.21.5"
   }
 }
