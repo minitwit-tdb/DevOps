@@ -18,6 +18,7 @@ export async function getSequelize (): Promise<Sequelize.Sequelize> {
           database: process.env.MYSQL_DATABASE || fallback.database,
           dialect: 'mariadb',
           timezone: 'Etc/GMT0',
+          logging: false,
           dialectOptions: {
             timezone: 'Etc/GMT0'
           }
