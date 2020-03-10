@@ -356,5 +356,6 @@ def main(host):
 if __name__ == "__main__":
     host = sys.argv[1]
 
+    sleep(5)
     main(host)
     exit(0)

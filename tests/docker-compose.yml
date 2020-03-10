@@ -15,8 +15,7 @@ services:
     ports:
       - 3306:3306
     networks:
-        testing_net:
-            ipv4_address: 172.19.199.1
+      - main
 
   server:
     build:
@@ -29,29 +28,23 @@ services:
       - 80:3000
       - 5001:5001
     healthcheck:
-      test: ["CMD", "curl" ,"http://localhost/healthcheck"]
+      test: ["CMD", "curl" ,"http://server:5001/healthcheck"]
       timeout: 5s
       retries: 10
-    networks:
-        testing_net:
-            ipv4_address: 172.19.199.2
     depends_on: 
       db:
         condition: service_healthy
+    networks:
+      - main
 
   tests:
     build:
       context: .
-    networks:
-        testing_net:
-            ipv4_address: 172.19.199.3
     depends_on:
       server:
         condition: service_healthy
+    networks:
+      - main
 
 networks:
-  testing_net:
-      ipam:
-          driver: default
-          config:
-              - subnet: 172.19.199.0/16
+  main:
