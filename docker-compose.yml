@@ -16,7 +16,7 @@ services:
     ports:
       - 3306:3306
     networks:
-      - db_network
+      - internal_network
 
   server:
     build:
@@ -31,13 +31,33 @@ services:
       - 80:3000
       - 5001:5001
     networks:
-      - db_network
+      - internal_network
       - main
     depends_on: 
       db:
         condition: service_healthy
 
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - main
+
+
+  grafana:
+    image: grafana/grafana:4.5.2
+    volumes:
+      - ./grafana:/var/lib/grafana
+    ports:
+      - "4000:3000"  
+    networks:
+      - main
+
 networks:
-  db_network:
+  internal_network:
     internal: true
   main:

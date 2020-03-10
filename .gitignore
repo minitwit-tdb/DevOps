@@ -3,6 +3,7 @@ node_modules/
 legacy/
 do/
 db/
+grafana/
 src/mariadb.json
 mariadb.json
 yarn-error.log
