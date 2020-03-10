@@ -21,7 +21,6 @@ export function beforeRequest (req: express.Request, res: express.Response, next
 export function afterRequest (req: express.Request, res: express.Response, next: express.NextFunction): void {
   function after (): void {
     if (req.hostname !== 'server' && req.url !== '/metrics') {
-      console.log(req.hostname, req.url)
       const elapsed = Date.now() - requestStart
       RESPONSE_COUNTER.inc()
       REQ_DURATION_SUMMARY.observe(elapsed)
