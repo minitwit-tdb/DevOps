@@ -1,4 +1,3 @@
-
 export function formatDatetime (timestamp: number | string): string {
   const date = new Date(Number(timestamp))
 

@@ -4,6 +4,8 @@ import { getTweetsForUserId, getLatestTweets, getUserByUsername, isFollowingUser
 import express = require('express');
 const router = express.Router()
 
+const TIMELINE_TEMPLATE = 'templates/timeline.html'
+
 // Shows a users timeline or if no user is logged in it will
 // redirect to the public timeline.  This timeline shows the user's
 // messages as well as all the messages of followed users.
@@ -20,7 +22,7 @@ router.get('/', async (req, res) => {
 
   const tweets = await getTweetsForUserId(self.user_id)
 
-  res.render('templates/timeline.html', {
+  res.render(TIMELINE_TEMPLATE, {
     tweets,
     urlTo,
     messages: req.flash('info'),
@@ -36,7 +38,7 @@ router.get('/public', async (req, res) => {
   const tweets = (await getLatestTweets())
     .map((tweet) => tweet.get({ plain: true }))
 
-  res.render('templates/timeline.html', {
+  res.render(TIMELINE_TEMPLATE, {
     tweets,
     urlTo,
     messages: req.flash('info'),
@@ -60,7 +62,7 @@ router.get('/user/:username', async (req, res) => {
   const isFollowing = await isFollowingUser(self, user)
 
   const tweets = await getTweetsByUserId(user.user_id)
-  res.render('templates/timeline.html', {
+  res.render(TIMELINE_TEMPLATE, {
     tweets,
     urlTo,
     messages: req.flash('info'),
