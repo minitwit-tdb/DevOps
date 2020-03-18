@@ -6,7 +6,11 @@
   ],
   "extends": [
     "standard-with-typescript",
+    "plugin:sonarjs/recommended",
     "plugin:security/recommended"
+  ],
+  "plugins": [
+    "sonarjs"
   ],
   "parserOptions": {
     "createDefaultProgram": true,
