@@ -7,6 +7,7 @@ import express = require('express');
 const router = express.Router()
 
 let LATEST = 0
+const UNAOTHORIZED_MSG = 'You are not authorized to use this resource!'
 
 function updateLatest (req: express.Request): void {
   const latest = Number(req.query.latest)
@@ -57,7 +58,7 @@ router.get('/msgs', async (req, res) => {
   if (!isReqFromSimulator(req)) {
     res.status(403).json({
       status: 403,
-      error_msg: 'You are not authorized to use this resource!'
+      error_msg: UNAOTHORIZED_MSG
     })
 
     return
@@ -84,7 +85,7 @@ router.get('/msgs/:username', async (req, res) => {
   if (!isReqFromSimulator(req)) {
     res.status(403).json({
       status: 403,
-      error_msg: 'You are not authorized to use this resource!'
+      error_msg: UNAOTHORIZED_MSG
     })
 
     return
@@ -118,7 +119,7 @@ router.post('/msgs/:username', async (req, res) => {
   if (!isReqFromSimulator(req)) {
     res.status(403).json({
       status: 403,
-      error_msg: 'You are not authorized to use this resource!'
+      error_msg: UNAOTHORIZED_MSG
     })
 
     return
@@ -151,7 +152,7 @@ router.get('/fllws/:username', async (req, res) => {
   if (!isReqFromSimulator(req)) {
     res.status(403).json({
       status: 403,
-      error_msg: 'You are not authorized to use this resource!'
+      error_msg: UNAOTHORIZED_MSG
     })
 
     return
@@ -184,7 +185,7 @@ router.post('/fllws/:username', async (req, res) => {
   if (!isReqFromSimulator(req)) {
     res.status(403).json({
       status: 403,
-      error_msg: 'You are not authorized to use this resource!'
+      error_msg: UNAOTHORIZED_MSG
     })
 
     return

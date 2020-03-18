@@ -6,6 +6,7 @@
   "scripts": {
     "build": "rm -rf lib && npx tsc --build && cp -r static lib/static && cp -r templates lib/templates",
     "start": "cd lib && node ./index.js",
+    "interface": "yarn build && npx dts-bundle --name utils --main lib/utils/index.d.ts --out ../utils.d.ts && npx dts-bundle --name database --main lib/database/index.d.ts --out ../database.d.ts && npx dts-bundle --name models --main lib/models/index.d.ts --out ../models.d.ts",
     "watch": "npx nodemon --watch 'src/**/*' --watch 'static/**/*' --watch 'templates/**/*' --ext ts,html,css --exec 'yarn build && yarn start'",
     "lint": "npx eslint 'src/**/*.{js,jsx,ts,tsx}' --cache --cache-location='./node_modules/.cache'",
     "flag_tool": "cd lib && node ./flagTool.js"
@@ -33,6 +34,7 @@
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-sonarjs": "^0.5.0",
     "eslint-plugin-standard": "^4.0.1",
     "nodemon": "^2.0.2",
     "typescript": "3.7.5"
@@ -40,6 +42,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
+    "dts-bundle": "^0.7.3",
     "express": "^4.17.1",
     "express-flash": "^0.0.2",
     "express-session": "^1.17.0",
