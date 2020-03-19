@@ -1,9 +1,10 @@
 import { handleUncaughtException } from './utils/handleUncaughtException'
-import { timelineRouter, simulatorRouter, authenticationRouter, followRouter, messageRouter, healthcheckRouter, metricRouter } from './routes'
+import { timelineRouter, simulatorRouter, authenticationRouter, followRouter, messageRouter, healthcheckRouter } from './routes'
 import { killPool } from './database'
 import { formatDatetime, getGravatarUrl } from './utils'
 import { initDB } from './models'
-import { beforeRequest, afterRequest } from './routes/metrics'
+import promBundle = require('express-prom-bundle');
+const metricsMiddleware = promBundle({ includeMethod: true, includePath: true, includeStatusCode: true })
 
 import express = require('express')
 import gracefulShutdown = require('http-graceful-shutdown')
@@ -27,8 +28,7 @@ async function start (): Promise<void> {
     .addFilter('datetimeformat', formatDatetime)
 
   // Setup routes
-  app.use(beforeRequest)
-  app.use(afterRequest)
+  app.use(metricsMiddleware)
   app.use('/', healthcheckRouter)
   app.use('/', timelineRouter)
   app.use('/', authenticationRouter)
@@ -42,11 +42,9 @@ async function startAPI (): Promise<void> {
 
   const app = configureServer(API_PORT)
 
-  app.use(beforeRequest)
-  app.use(afterRequest)
+  app.use(metricsMiddleware)
   app.use('/', healthcheckRouter)
   app.use('/', simulatorRouter)
-  app.use('/', metricRouter)
 }
 
 function configureServer (port: number): express.Express {
