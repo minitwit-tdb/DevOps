@@ -4,7 +4,12 @@ import { killPool } from './database'
 import { formatDatetime, getGravatarUrl } from './utils'
 import { initDB } from './models'
 import promBundle = require('express-prom-bundle');
-const metricsMiddleware = promBundle({ includeMethod: true, includePath: true, includeStatusCode: true })
+
+const normalizePath: Array<[string, string]> = [
+  ['^/fllws/.*', '/fllws/#name'],
+  ['^/msgs/.*', '/msgs/#name']
+]
+const metricsMiddleware = promBundle({ includeMethod: true, includePath: true, includeStatusCode: true, normalizePath })
 
 import express = require('express')
 import gracefulShutdown = require('http-graceful-shutdown')
