@@ -1,7 +1,7 @@
 import { handleUncaughtException } from './utils/handleUncaughtException'
 import { timelineRouter, simulatorRouter, authenticationRouter, followRouter, messageRouter, healthcheckRouter } from './routes'
 import { killPool } from './database'
-import { formatDatetime, getGravatarUrl } from './utils'
+import { formatDatetime, getGravatarUrl, logger } from './utils'
 import { initDB } from './models'
 import promBundle = require('express-prom-bundle');
 
@@ -23,7 +23,7 @@ const PORT = Number(process.env.PORT || 3000)
 const API_PORT = Number(process.env.API_PORT || 5001)
 
 async function start (): Promise<void> {
-  console.log(`Starting application on port ${PORT}`)
+  logger.info(`Starting application on port ${PORT}`)
   await initDB()
 
   const app = configureServer(PORT)
@@ -42,7 +42,7 @@ async function start (): Promise<void> {
 }
 
 async function startAPI (): Promise<void> {
-  console.log(`Starting API on port ${API_PORT}`)
+  logger.info(`Starting application on port ${PORT}`)
   await initDB()
 
   const app = configureServer(API_PORT)
@@ -70,9 +70,9 @@ function configureServer (port: number): express.Express {
 
   // Begin listening for connections
   const server = app.listen(port, '0.0.0.0', () => {
-    console.log(`Listening on port ${port}`)
+    logger.info(`Starting application on port ${PORT}`)
   }).on('error', (err) => {
-    console.error(err)
+    logger.error(`Unable to start server ${err}`)
   })
 
   const shutdown = gracefulShutdown(server)

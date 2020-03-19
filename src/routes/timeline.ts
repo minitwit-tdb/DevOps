@@ -1,4 +1,4 @@
-import { getUserBySession, urlTo } from '../utils'
+import { getUserBySession, urlTo, logger } from '../utils'
 import { getTweetsForUserId, getLatestTweets, getUserByUsername, isFollowingUser, getTweetsByUserId } from '../database'
 
 import express = require('express');
@@ -10,7 +10,7 @@ const TIMELINE_TEMPLATE = 'templates/timeline.html'
 // redirect to the public timeline.  This timeline shows the user's
 // messages as well as all the messages of followed users.
 router.get('/', async (req, res) => {
-  console.log(`We got a visitor from: ${req.connection.remoteAddress}`)
+  logger.info(`We got a visitor from: ${req.connection.remoteAddress}`)
   const self = getUserBySession(req.session)
   // const offset = req.query.offset
 
