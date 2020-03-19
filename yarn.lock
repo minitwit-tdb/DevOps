@@ -1237,6 +1237,14 @@ express-flash@^0.0.2:
   dependencies:
     connect-flash "0.1.x"
 
+express-prom-bundle@^5.1.5:
+  version "5.1.5"
+  resolved "https://registry.yarnpkg.com/express-prom-bundle/-/express-prom-bundle-5.1.5.tgz#f298615879299a58cf8ec1350186f4de91d91fa4"
+  integrity sha512-tUaQUBu0r9zGYcVDpKBI2AeWimuuodaC5BSBkzLPQxRTxaKQShQNnONQSYwjLxbHfPwlCKVZlzfbB9Recnj0Vg==
+  dependencies:
+    on-finished "^2.3.0"
+    url-value-parser "^2.0.0"
+
 express-session@^1.17.0:
   version "1.17.0"
   resolved "https://registry.yarnpkg.com/express-session/-/express-session-1.17.0.tgz#9b50dbb5e8a03c3537368138f072736150b7f9b3"
@@ -2416,7 +2424,7 @@ object.values@^1.1.0:
     function-bind "^1.1.1"
     has "^1.0.3"
 
-on-finished@~2.3.0:
+on-finished@^2.3.0, on-finished@~2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/on-finished/-/on-finished-2.3.0.tgz#20f1336481b083cd75337992a16971aa2d906947"
   integrity sha1-IPEzZIGwg811M3mSoWlxqi2QaUc=
@@ -3410,6 +3418,11 @@ url-parse-lax@^1.0.0:
   integrity sha1-evjzA2Rem9eaJy56FKxovAYJ2nM=
   dependencies:
     prepend-http "^1.0.1"
+
+url-value-parser@^2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/url-value-parser/-/url-value-parser-2.0.1.tgz#c8179a095ab9ec1f5aa17ca36af5af396b4e95ed"
+  integrity sha512-bexECeREBIueboLGM3Y1WaAzQkIn+Tca/Xjmjmfd0S/hFHSCEoFkNh0/D0l9G4K74MkEP/lLFRlYnxX3d68Qgw==
 
 use@^3.1.0:
   version "3.1.1"

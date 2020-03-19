@@ -45,6 +45,7 @@
     "dts-bundle": "^0.7.3",
     "express": "^4.17.1",
     "express-flash": "^0.0.2",
+    "express-prom-bundle": "^5.1.5",
     "express-session": "^1.17.0",
     "http-graceful-shutdown": "^2.3.2",
     "mariadb": "^2.2.0",
