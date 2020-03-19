@@ -42,7 +42,7 @@ async function start (): Promise<void> {
 }
 
 async function startAPI (): Promise<void> {
-  logger.info(`Starting application on port ${PORT}`)
+  logger.info(`Starting API on port ${API_PORT}`)
   await initDB()
 
   const app = configureServer(API_PORT)
@@ -70,7 +70,7 @@ function configureServer (port: number): express.Express {
 
   // Begin listening for connections
   const server = app.listen(port, '0.0.0.0', () => {
-    logger.info(`Starting application on port ${PORT}`)
+    logger.info(`Listening on ${port}`)
   }).on('error', (err) => {
     logger.error(`Unable to start server ${err}`)
   })
