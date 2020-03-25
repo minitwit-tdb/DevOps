@@ -1,4 +1,4 @@
-import { getUserBySession, logger} from '../utils'
+import { getUserBySession, logger } from '../utils'
 import { addMessage } from '../database'
 
 import express = require('express');
