@@ -11,7 +11,6 @@ export async function handleUncaughtException (shutdown: () => Promise<void>, er
     console.error('Uncaught exception: ', err)
   }
 
-  
   await shutdown()
   await killPool()
   process.exit(1)
