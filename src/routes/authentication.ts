@@ -21,21 +21,22 @@ router.all('/register', async (req, res) => {
 
     if (!body.username) {
       error = 'You have to enter a username'
-      logger.info('Register(): User failed to provide a valid username')
+      logger.info(`Authentication.register<ALL>(): Visitor from: ${req.connection.remoteAddress} failed to provide a valid username.`)
     } else if (!body.email || !body.email.includes('@')) {
       error = 'You have to enter a valid email address'
-      logger.info('Register(): User failed to provide a valid email')
+      logger.info(`Authentication.register<ALL>(): Visitor from: ${req.connection.remoteAddress} failed to provide a valid email.`)
     } else if (!body.password) {
       error = 'You have to enter a password'
-      logger.info('Register(): User failed to provide a password')
+      logger.info(`Authentication.register<ALL>(): Visitor from: ${req.connection.remoteAddress} failed to provide a password.`)
     } else if (body.password !== body.password2) {
       error = 'The two passwords do not match'
+      logger.info(`Authentication.register<ALL>(): Visitor from: ${req.connection.remoteAddress} failed to match the passwords.`)
     } else if (typeof await getUserByUsername(body.username) !== 'undefined') {
       error = 'The username is already taken'
-      logger.info('Register(): User failed to register, since username was already taken')
+      logger.info(`Authentication.register<ALL>(): Visitor from: ${req.connection.remoteAddress} failed to register, since username was already taken.`)
     } else {
       await addUser(body.username, body.email, body.password)
-      logger.info(`Register(): Registered user with username ${body.username}`)
+      logger.info(`Authentication.register<ALL>(): Visitor from: ${req.connection.remoteAddress} was registered with username ${body.username}.`)
       req.flash('info', 'You were successfully registered and can login now')
       res.redirect('/login')
 
@@ -57,7 +58,7 @@ router.all('/login', async (req, res) => {
 
   if (self) {
     res.redirect('/')
-
+    logger.info(`Authentication.login<ALL>(): Visitor from: ${req.connection.remoteAddress} logged in.`)
     return
   }
 
@@ -68,8 +69,10 @@ router.all('/login', async (req, res) => {
 
     if (!user) {
       error = 'Invalid username'
+      logger.info(`Authentication.login<ALL>(): Visitor from: ${req.connection.remoteAddress} failed to provide a valid username.`)
     } else if (!verifyPassword(req.body.password, user.pw_hash)) {
       error = 'Invalid password'
+      logger.info(`Authentication.login<ALL>(): Visitor from: ${req.connection.remoteAddress} failed to provide a valid password.`)
     } else {
       req.flash('info', 'You were logged in')
 
@@ -79,6 +82,7 @@ router.all('/login', async (req, res) => {
       } else {
         req.session.user = user
         res.redirect('/')
+        logger.info(`Authentication.login<ALL>(): Visitor from: ${req.connection.remoteAddress} logged in.`)
 
         return
       }
@@ -95,6 +99,7 @@ router.all('/login', async (req, res) => {
 
 // Logs the user out
 router.get('/logout', (req, res) => {
+  logger.info(`Authentication.logout<ALL>(): Visitor from: ${req.connection.remoteAddress} logged out.`)
   req.flash('info', 'You were logged out')
 
   if (req.session) {
