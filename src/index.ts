@@ -1,9 +1,15 @@
 import { handleUncaughtException } from './utils/handleUncaughtException'
-import { timelineRouter, simulatorRouter, authenticationRouter, followRouter, messageRouter, healthcheckRouter, metricRouter } from './routes'
+import { timelineRouter, simulatorRouter, authenticationRouter, followRouter, messageRouter, healthcheckRouter } from './routes'
 import { killPool } from './database'
-import { formatDatetime, getGravatarUrl } from './utils'
+import { formatDatetime, getGravatarUrl, logger } from './utils'
 import { initDB } from './models'
-import { beforeRequest, afterRequest } from './routes/metrics'
+import promBundle = require('express-prom-bundle');
+
+const normalizePath: Array<[string, string]> = [
+  ['^/fllws/.*', '/fllws/#name'],
+  ['^/msgs/.*', '/msgs/#name']
+]
+const metricsMiddleware = promBundle({ includeMethod: true, includePath: true, includeStatusCode: true, normalizePath })
 
 import express = require('express')
 import gracefulShutdown = require('http-graceful-shutdown')
@@ -17,7 +23,7 @@ const PORT = Number(process.env.PORT || 3000)
 const API_PORT = Number(process.env.API_PORT || 5001)
 
 async function start (): Promise<void> {
-  console.log(`Starting application on port ${PORT}`)
+  logger.info(`Starting application on port ${PORT}`)
   await initDB()
 
   const app = configureServer(PORT)
@@ -27,8 +33,7 @@ async function start (): Promise<void> {
     .addFilter('datetimeformat', formatDatetime)
 
   // Setup routes
-  app.use(beforeRequest)
-  app.use(afterRequest)
+  app.use(metricsMiddleware)
   app.use('/', healthcheckRouter)
   app.use('/', timelineRouter)
   app.use('/', authenticationRouter)
@@ -37,16 +42,14 @@ async function start (): Promise<void> {
 }
 
 async function startAPI (): Promise<void> {
-  console.log(`Starting API on port ${API_PORT}`)
+  logger.info(`Starting API on port ${API_PORT}`)
   await initDB()
 
   const app = configureServer(API_PORT)
 
-  app.use(beforeRequest)
-  app.use(afterRequest)
+  app.use(metricsMiddleware)
   app.use('/', healthcheckRouter)
   app.use('/', simulatorRouter)
-  app.use('/', metricRouter)
 }
 
 function configureServer (port: number): express.Express {
@@ -67,9 +70,9 @@ function configureServer (port: number): express.Express {
 
   // Begin listening for connections
   const server = app.listen(port, '0.0.0.0', () => {
-    console.log(`Listening on port ${port}`)
+    logger.info(`Listening on ${port}`)
   }).on('error', (err) => {
-    console.error(err)
+    logger.error(`Unable to start server ${err}`)
   })
 
   const shutdown = gracefulShutdown(server)

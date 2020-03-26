@@ -1,4 +1,4 @@
-import { getUserBySession, urlTo } from '../utils'
+import { getUserBySession, urlTo, logger } from '../utils'
 import { getTweetsForUserId, getLatestTweets, getUserByUsername, isFollowingUser, getTweetsByUserId } from '../database'
 
 import express = require('express');
@@ -10,11 +10,12 @@ const TIMELINE_TEMPLATE = 'templates/timeline.html'
 // redirect to the public timeline.  This timeline shows the user's
 // messages as well as all the messages of followed users.
 router.get('/', async (req, res) => {
-  console.log(`We got a visitor from: ${req.connection.remoteAddress}`)
+  logger.info(`Timeline<GET>(): We got a visitor from: ${req.connection.remoteAddress}`)
   const self = getUserBySession(req.session)
   // const offset = req.query.offset
 
   if (!self) {
+    logger.info(`Timeline<GET>(): Visitor from: ${req.connection.remoteAddress} was redirected to the public timeline.`)
     res.redirect('/public')
 
     return
@@ -34,6 +35,7 @@ router.get('/', async (req, res) => {
 
 // Displays the latest messages of all users.
 router.get('/public', async (req, res) => {
+  logger.info(`Timeline.public<GET>(): Visitor from: ${req.connection.remoteAddress} went to look at the latest tweets of all users.`)
   const self = getUserBySession(req.session)
   const tweets = (await getLatestTweets())
     .map((tweet) => tweet.get({ plain: true }))
@@ -49,10 +51,12 @@ router.get('/public', async (req, res) => {
 
 // Display's a users tweets.
 router.get('/user/:username', async (req, res) => {
+  logger.info(`Timeline.user/:username<GET>(): Visitor from: ${req.connection.remoteAddress} went to look at the tweets of the following user: ${req.params.username}`)
   const self = getUserBySession(req.session)
   const user = await getUserByUsername(req.params.username)
 
   if (!user) {
+    logger.warn(`Timeline.user/:username<GET>(): Visitor from: ${req.connection.remoteAddress} received a "Not found" error after trying to display the following user's tweets: ${req.params.username}`)
     res.status(404)
     res.send('Not found')
 
