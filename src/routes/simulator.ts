@@ -248,13 +248,13 @@ router.post('/fllws/:username', async (req, res) => {
     const toUnfollow = await getUserByUsername(body.unfollow)
 
     if (!toUnfollow) {
-      logger.warn(`Simulator.fllws/:username<POST>(): Unable to find user to unfollow with username: ${body.follow} for user ${user.username}`)
+      logger.warn(`Simulator.fllws/:username<POST>(): Unable to find user to unfollow with username: ${body.unfollow} for user ${user.username}`)
 
       res.status(500).end()
       return
     }
 
-    logger.info(`Simulator.fllws/:username<POST>(): Deleted follower ${body.follow} for user ${user.username}`)
+    logger.info(`Simulator.fllws/:username<POST>(): Deleted follower ${body.unfollow} for user ${user.username}`)
     await deleteFollower(user.user_id, toUnfollow.user_id)
 
     res.status(204).end()
