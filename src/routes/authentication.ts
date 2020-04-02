@@ -21,13 +21,13 @@ router.all('/register', async (req, res) => {
 
     if (!body.username || !body.email || !body.password || typeof await getUserByUsername(body.username) !== 'undefined') {
       error = 'Username, email or password was invalid'
-      if(!body.username) {
+      if (!body.username) {
         logger.info(`Authentication.register<ALL>(): Visitor from: ${req.connection.remoteAddress} failed to provide a username.`)
       } else if (typeof await getUserByUsername(body.username) !== 'undefined') {
-        logger.info(`Authentication.register<ALL>(): Visitor from: ${req.connection.remoteAddress} tried to register with an existing username.`)        
-      }else if (!body.email) {
+        logger.info(`Authentication.register<ALL>(): Visitor from: ${req.connection.remoteAddress} tried to register with an existing username.`)
+      } else if (!body.email) {
         logger.info(`Authentication.register<ALL>(): Visitor from: ${req.connection.remoteAddress} failed to provide an email.`)
-      }else if (!body.password) {
+      } else if (!body.password) {
         logger.info(`Authentication.register<ALL>(): Visitor from: ${req.connection.remoteAddress} failed to provide an password.`)
       }
     } else if (!body.email.includes('@')) {
