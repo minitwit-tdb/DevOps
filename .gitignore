@@ -4,6 +4,7 @@ legacy/
 do/
 db/
 grafana/
+prom/
 src/mariadb.json
 mariadb.json
 yarn-error.log

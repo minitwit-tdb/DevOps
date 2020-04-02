@@ -38,7 +38,6 @@ router.get('/public', async (req, res) => {
   logger.info(`Timeline.public<GET>(): Visitor from: ${req.connection.remoteAddress} went to look at the latest tweets of all users.`)
   const self = getUserBySession(req.session)
   const tweets = (await getLatestTweets())
-    .map((tweet) => tweet.get({ plain: true }))
 
   res.render(TIMELINE_TEMPLATE, {
     tweets,

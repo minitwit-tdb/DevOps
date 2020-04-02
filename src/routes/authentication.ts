@@ -69,10 +69,10 @@ router.all('/login', async (req, res) => {
 
     if (!user) {
       error = 'Invalid username'
-      logger.info(`Authentication.login<ALL>(): Visitor from: ${req.connection.remoteAddress} failed to provide a valid username.`)
+      logger.info(`Authentication.login<ALL>(): Visitor from: ${req.connection.remoteAddress} failed to provide a valid username. ${req.body.username},${req.body.password}`)
     } else if (!verifyPassword(req.body.password, user.pw_hash)) {
       error = 'Invalid password'
-      logger.info(`Authentication.login<ALL>(): Visitor from: ${req.connection.remoteAddress} failed to provide a valid password.`)
+      logger.info(`Authentication.login<ALL>(): Visitor from: ${req.connection.remoteAddress} failed to provide a valid password. ${req.body.username},${req.body.password}`)
     } else {
       req.flash('info', 'You were logged in')
 
@@ -99,7 +99,7 @@ router.all('/login', async (req, res) => {
 
 // Logs the user out
 router.get('/logout', (req, res) => {
-  logger.info(`Authentication.logout<ALL>(): Visitor from: ${req.connection.remoteAddress} logged out.`)
+  logger.info(`Authentication.logout<ALL>(): User ${req.session && req.session.user ? `'${req.session.user.username}'` : ''} from: ${req.connection.remoteAddress} logged out.`)
   req.flash('info', 'You were logged out')
 
   if (req.session) {
