@@ -38,7 +38,7 @@ In order to run this application, the following step should be taken:
     }
     ```
 
-* Run the command ```yarn install```
+* Run the command ```yarn install``` if encountering errors, use ```yarn install --ignore-engines```
 
 ## Running the application
 
@@ -51,7 +51,7 @@ In order to run the application use the following commands:
 
 ```yarn watch```
 
-Once this is done you should be able to access the application from ```localhost:3000```
+Once this is done you should be able to access the application from ```localhost```
 
 (NB: these commands and more can be found described in the file ```package.json```)
 

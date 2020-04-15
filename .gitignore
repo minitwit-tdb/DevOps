@@ -8,3 +8,4 @@ prom/
 src/mariadb.json
 mariadb.json
 yarn-error.log
+.DS_Store
