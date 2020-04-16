@@ -57,7 +57,7 @@ jobs:
       - checkout
       - add_ssh_keys
       - run:
-          name: Deploying on Digital Ocean droplet
+          name: Deploying on Digital Ocean droplets with Docker Swarm
           command: |
             if [ -n "${CIRCLE_TAG}" ]; then
               DOCKER_TAG="$CIRCLE_TAG"
