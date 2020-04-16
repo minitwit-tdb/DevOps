@@ -73,10 +73,6 @@ jobs:
 
 workflows:
   version: 2
-  # commit:
-  #   jobs:
-  #     - lint
-  #     - api_test
 
   deploy:
     jobs:
