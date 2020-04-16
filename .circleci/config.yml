@@ -57,7 +57,7 @@ jobs:
       - checkout
       - add_ssh_keys
       - run:
-          name: Docker Swarm - Rolling update 
+          name: Deploying on Digital Ocean droplet
           command: |
             if [ -n "${CIRCLE_TAG}" ]; then
               DOCKER_TAG="$CIRCLE_TAG"
@@ -73,15 +73,38 @@ jobs:
 
 workflows:
   version: 2
+  commit:
+    jobs:
+      - lint
+      - api_test
+      - build:
+        requires:
+          - lint
+          - api_test
+      - deploy:
+          requires:
+            - build
 
   deploy:
     jobs:
       - api_test:
+          filters:
+            branches:
+              only: master
       - lint:
+          filters:
+            branches:
+              only: master
       - build:
           requires:
             - lint
             - api_test
+          filters:
+            branches:
+              only: master
       - deploy:
           requires:
             - build
+          filters:
+            branches:
+              only: master
