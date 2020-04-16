@@ -64,7 +64,7 @@ jobs:
             else
               DOCKER_TAG="latest"
             fi
-            ssh $SSH_SWARM_HOST@$SSH_HOST -o StrictHostKeyChecking=no "
+            ssh $SSH_USER@$SSH_SWARM_HOST -o StrictHostKeyChecking=no "
               cd /etc/minitwit
               sh ./update.sh ${DOCKER_TAG} ${DOCKER_USER} ${DOCKER_PASSWORD}
               exit
