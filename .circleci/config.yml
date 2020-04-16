@@ -78,9 +78,9 @@ workflows:
       - lint
       - api_test
       - build:
-        requires:
-          - lint
-          - api_test
+          requires:
+            - lint
+            - api_test
       - deploy:
           requires:
             - build
