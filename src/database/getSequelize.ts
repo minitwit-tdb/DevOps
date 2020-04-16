@@ -16,6 +16,7 @@ export async function getSequelize (): Promise<Sequelize.Sequelize> {
           password: process.env.MYSQL_ROOT_PASSWORD || fallback.password,
           username: process.env.MYSQL_USER || fallback.user,
           database: process.env.MYSQL_DATABASE || fallback.database,
+          port: process.env.DB_PORT || fallback.port,
           dialect: 'mariadb',
           timezone: 'Etc/GMT0',
           logging: false,
@@ -36,6 +37,7 @@ export async function getSequelize (): Promise<Sequelize.Sequelize> {
           password: String(process.env.MYSQL_ROOT_PASSWORD),
           username: String(process.env.MYSQL_USER),
           database: String(process.env.MYSQL_DATABASE),
+          port: Number(process.env.DB_PORT),
           dialect: 'mariadb',
           timezone: 'Etc/GMT0',
           dialectOptions: {
