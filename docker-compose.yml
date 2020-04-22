@@ -14,9 +14,7 @@ services:
       - ./db:/var/lib/mysql
       - ./db.cnf:/etc/mysql/conf.d/custom.cnf
     ports:
-      - 3306:3306
-    networks:
-      - internal_network
+      - 3307:3306
 
   server:
     build:
@@ -30,9 +28,6 @@ services:
     ports:
       - 80:3000
       - 5001:5001
-    networks:
-      - internal_network
-      - main
     depends_on: 
       db:
         condition: service_healthy
@@ -45,9 +40,6 @@ services:
       - ./prom:/prometheus
     ports:
       - "9090:9090"
-    networks:
-      - main
-
 
   grafana:
     image: grafana/grafana:4.5.2
@@ -55,10 +47,3 @@ services:
       - ./grafana:/var/lib/grafana
     ports:
       - "4000:3000"  
-    networks:
-      - main
-
-networks:
-  internal_network:
-    internal: true
-  main:

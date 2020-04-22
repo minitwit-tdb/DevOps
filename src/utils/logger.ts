@@ -13,7 +13,8 @@ export const logger = winston.createLogger({
     // - Write all logs with level `info` and below to `combined.log`
     //
     new winston.transports.File({ filename: 'error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'combined.log' })
+    new winston.transports.File({ filename: 'combined.log' }),
+    new winston.transports.Http({ host: '157.245.35.115', port: 5000 })
   ]
 })
 
