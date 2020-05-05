@@ -40,6 +40,8 @@ The artifacts stored on the repository include Docker configuration files, Prome
 
 We barely needed to discuss branching strategy as it became apparently very quickly that we all liked the concept of Git-Flow, whether or not we had much experience with it. As such, the employed strategy is Git-Flow.
 
+mere (locked branches, reviews etc.)
+
 ###### Applied development process and tools supporting it
  -  For example, how did you use issues, Kanban boards, etc. to organize open tasks
 
