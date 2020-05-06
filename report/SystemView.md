@@ -12,8 +12,7 @@ Our application was then dockerized in order to easily deploy our application on
 different servers based on our needs. Furthermore, to orchestrate our application
 we have been using Docker Swarm with five replicas.
 
-We are using four different servers hosted on DigitalOcean to run our code, where
-two of the servers solely functions as Worker Nodes (with two replicas each) for our Docker Swarm setup and the third functions as a Manager Node. The final server has been our main server before we introduced our scaling and load-balancing solution, and this is the server that contains our database instance and our logging and monitoring containers.
+We are using four different servers hosted on DigitalOcean to run our application, where two of these servers solely functions as Worker Nodes (with two replicas each) for our Docker Swarm setup and the third functions as a Manager Node. The final server has been our main server before we introduced our scaling and load-balancing solution, and this is the server that contains our database instance and our logging and monitoring containers.
 
 Please refer to the Deployment diagram below which illustrates the structuring of our system across servers and the overall interactions between different containers.
 
