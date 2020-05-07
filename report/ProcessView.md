@@ -5,11 +5,11 @@
 Prior to the Corona lockdown, we met up once a week for the lectures and would discuss/allocate tasks afterwards. For communication between lectures, we used Slack where we would discuss details and ask for advice and help as needed.
 After the lockdown happened, we've been more active on Slack regarding organization and still asking for advice and help. More communication was a clear reaction to the lockdown.
 
-We did also use Github issues and projects at the start of the project to manage the work we had to do, but later concluded that this was not beneficial to us, since the weekly assignments were small enough to discuss on Slack without developers missing key conclusions and dicussions in regards to the assignemnts.
+We did also use GitHub issues and projects at the start of the project to manage the work we had to do, but later concluded that this was not beneficial to us, since the weekly assignments were small enough to discuss on Slack without developers missing key conclusions and discussions in regards to the assignments.
 
 ### How is the team organized?
 
-We are 4 team members with varying skills. We did not give memebers separate conserns (e.g. backend vs. frontend) but instead we delegated tasks each week based on the assignments instead.
+We are 4 team members with varying skills. We did not give members separate concerns (e.g. backend vs. frontend) but instead we delegated tasks each week based on the assignments instead.
 
 Our level of expertise differed and some of us had greater knowledge into the chosen technology stack and hence some could be seen as experts.
 
@@ -22,17 +22,17 @@ Our CI/CD chains are triggered using CircleCI. Our chains rely on artifacts/tool
 We have two different CI/CD chains.
 One is called 'commit' and has the two jobs called 'lint' and 'api_test', which is triggered every time there is pushed to our repository (on any branch) and its purpose is to verify the quality of the code pushed.
 
-The other is called 'deploy' and has four jobs called 'api_test', 'lint', 'build' and 'deploy'. The 'deploy' chain only runs on merges to the master branch and its purpose is first to verify that code is relaible and of sufficient quality and only then is an image build and pushed to DockerHub. Afterwards the deploy occurs which updates our Docker Swarm containers using rolling updates with 60s delays between each rollout.
+The other is called 'deploy' and has four jobs called 'api_test', 'lint', 'build' and 'deploy'. The 'deploy' chain only runs on merges to the master branch and its purpose is first to verify that code is reliable and of sufficient quality and only then is an image built and pushed to DockerHub. Afterwards the deploy occurs which updates our Docker Swarm containers using rolling updates with 60s delays between each rollout.
 
-All jobs, through CircleCI, spins up a Docker VM with a container based on the image circleci/node:13.8.0 whereas the API-test job uses the image circleci/python:3.8 because the tests are written in Python.
+All jobs, through CircleCI, spin up a Docker VM with a container based on the image circleci/node:13.8.0 whereas the API-test job uses the image circleci/python:3.8 because the tests are written in Python.
 The 'lint' job/stage runs `yarn install` to install dependencies and then `yarn lint` to lint the code which checks for code smells and technical debt.
-The 'api_test' job/stage moves to the test directory and run `docker-compose run tests` followed by `docker-compose down`, which blackbox tests our API with 1000 queries. In case any of these queries fails in any way then we deem that the published code is not reliable enough and hence we stop the pipeline here.
+The 'api_test' job/stage moves to the test directory and run `docker-compose run tests` followed by `docker-compose down`, which blackbox tests our API with 1000 queries. In case any of these queries fail in any way we deem that the published code is not reliable enough and hence stop the pipeline here.
 The 'build' job/stage logs onto DockerHub before running `docker build` to build the latest version of the application before pushing it to DockerHub using `docker push`.
 The 'deploy' job/stage uses SSH to connect to the Docker Swarm host machine and executes the script in update.sh supplying the relevant Docker credentials in order to perform the rolling update.
 
-After a pipeline is completed then CircleCI posts a message to our Slack channel reporting the result of the pipeline, allow developers to respond immediately in case an error occurs, without having to constantly refresh the CircleCI UI.
+After a pipeline is completed CircleCI posts a message to our Slack channel reporting the result of the pipeline, allowing developers to respond immediately in case an error occurs, without having to constantly refresh the CircleCI UI.
 
-In the image below a visualisation of the 'commit' pipeline, managed by CircleCI, can be seen in the image below.
+The image below is a visualisation of the 'commit' pipeline, managed by CircleCI.
 
 ![Commit pipeline](./images/commit_CI.png)
 
@@ -51,9 +51,9 @@ Furthermore our monorepo structure allows for developers to easily change betwee
 
 ### Applied branching strategy
 
-We opted to use part of the GitFlow branching strategy in this project. This meant that all new features was developed in feature branches and merged to a development branch, which contained new features that have not been deployed yet. The master branch is reserved for stable code that will automatically be deployed whenever code is merged to this branch.
+We opted to use part of the GitFlow branching strategy in this project. This meant that all new features were developed in feature branches and merged into a development branch, which contained new features that have not been deployed yet. The master branch is reserved for stable code that will automatically be deployed whenever code is merged to this branch.
 
-We never had to use hotfix branches since we did not encoutner major issues that needed to be fixed in our production code. The only scenario where this could have been done was when we fixed our own artifically indcued regression during the penetration testing assignment.
+We never had to use hotfix branches since we did not encounter major issues that needed to be fixed in our production code. The only scenario where this could have been done was when we fixed our own artifically induced regression during the penetration testing assignment.
 
 Finally we also chose not to use release branches since we found that pull-requests to master provided us with enough confidence in the code. In case we had opted to use staging environments, then maybe release branches would have made more sense.
 
@@ -73,9 +73,9 @@ We monitor the total number of HTTP responses, the average request duration acro
 
 ![Grafana dashboard](./images/grafana.png)
 
-While these metrics allows us to assess the general health of our endpoints, allowing us to react slow response times, then our monitoring could be further enhanced.
+While these metrics allow us to assess the general health of our endpoints, allowing us to react to slow response times, our monitoring could be further enhanced.
 
-As an example we could include metrics on the servers health (CPU, Disk usage, etc.) directly in Grafana, since it is only available on the Digital Ocean dashboard right now. Furthermore it might also have been possible to aggregate our data differently to expose issues quicker. Perhaps we could have compared current response times with those an hour ago to see if any regressions has occurred?
+As an example we could include metrics on the servers health (CPU, Disk usage, etc.) directly in Grafana, since it is only available on the Digital Ocean dashboard right now. Furthermore it might also have been possible to aggregate our data differently to expose issues quicker. Perhaps we could have compared current response times with those an hour ago to see if any regressions have occurred?
 
 ### What do you log in your systems and how do you aggregate logs?
 
@@ -124,8 +124,8 @@ Please refer to our Security Report for additional details and argumentation.
 
 ### Applied strategy for scaling and load balancing
 
-We have opted to use Docker Swarm to achieve scaling and load balancing, since it seemed considerably more scalable than a hot and standby server setup. Furthermore, we chose Docker Swarm since it also automatically restarts our services in case they ever go down. Finally Docker Swarm allows to easily scale our application horizontally by running a single command that adds new replicas to the swarm.
+We have opted to use Docker Swarm to achieve scaling and load balancing, since it seemed considerably more scalable than a hot and standby server setup. Furthermore, we chose Docker Swarm since it also automatically restarts our services in case they ever go down. Finally Docker Swarm allows us to easily scale our application horizontally by running a single command that adds new replicas to the swarm.
 
-We use rolling updates when deploying our application, using five replicas across three nodes, with a 60 second delay during each update. This allows us to detect issues during the deployment and terminate the update early in case something is going wrong with newly updated replicas and at the same time it allows is to have 100% uptime during deployments since Docker Swarm also handles load balancing between our replicas.
+We use rolling updates when deploying our application, using five replicas across three nodes, with a 60 second delay during each update. This allows us to detect issues during the deployment and terminate the update early in case something is going wrong with newly updated replicas and at the same time it allows us to have 100% uptime during deployments since Docker Swarm also handles load balancing between our replicas.
 
 This setup helps both with congestion and it removes our MiniTwit application as a single point of failure. However, we still only run a single database container, so in case this ever fails then the whole application can still fail. Given more resources and time then this would have been considered in the future.

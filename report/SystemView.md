@@ -2,7 +2,7 @@
 
 ### Architecture of our system
 
-In this section we will discuss how our MiniTwit implementation works from a highlevel perspective, including its overall interaction with different systems.
+In this section we will discuss how our MiniTwit implementation works from a high level perspective, including its overall interaction with different systems.
 
 During the initial refactoring of MiniTwit we opted to use TypeScript as the
 coding language and Node.JS as an environment to execute the written code on a
@@ -12,13 +12,13 @@ Our application was then dockerized in order to easily deploy our application on
 different servers based on our needs. Furthermore, to orchestrate our application
 we have been using Docker Swarm with five replicas.
 
-We are using four different servers hosted on DigitalOcean to run our application, where two of these servers solely functions as Worker Nodes (with two replicas each) for our Docker Swarm setup and the third functions as a Manager Node. The final server has been our main server before we introduced our scaling and load-balancing solution, and this is the server that contains our database instance and our logging and monitoring containers.
+We are using four different servers hosted on DigitalOcean to run our application, where two of these servers solely function as Worker Nodes (with two replicas each) for our Docker Swarm setup and the third functions as a Manager Node. The final server has been our main server before we introduced our scaling and load-balancing solution, and this is the server that contains our database instance and our logging and monitoring containers.
 
 Please refer to the Deployment diagram below which illustrates the structuring of our system across servers and the overall interactions between different containers.
 
 ![Deployment diagram](./images/deploy.png)
 
-The following points describes certain aspects and observations of the diagram above:
+The following points describe certain aspects and observations of the diagram above:
 
 * The MiniTwit component will be expanded in the following section.
 * The ingress network depicted only shows one manager and one worker node. This is
@@ -49,7 +49,7 @@ The interfaces between the components displayed in the Component Diagram will be
 
 ### Dependencies
 
-The dependency graph for our Minitwit application can be seen in the Directed Acylic Graph below, where the green edges visualises dependencies used during development and the red edges visualises run-time dependencies.
+The dependency graph for our Minitwit application can be seen in the Directed Acylic Graph below, where the green edges visualise dependencies used during development and the red edges visualise run-time dependencies.
 
 ![Dependency graph](images/deps.svg)
 
@@ -62,11 +62,11 @@ The following interesting observations can be made from the image above:
 
 #### Internal interactions
 
-As mentioned in the previous section the focus of our components have been to have a low coupling or, at least, keep our dependencies between our components uni-directional. The purpose of this is to keep our code maintainable, and allow developers to develop separate components without necessarily having to dive into other components. In other words this structure allows us to separate the concerns of the developrs on this project in case it should grow too large for one developer to realistically maintain a detailed overview of everything in the codebase.
+As mentioned in the previous section the focus of our components have been to have a low coupling or, at least, keep our dependencies between our components uni-directional. The purpose of this is to keep our code maintainable, and allow developers to develop separate components without necessarily having to dive into other components. In other words this structure allows us to separate the concerns of the developers on this project in case it should grow too large for one developer to realistically maintain a detailed overview of everything in the codebase.
 
-However, even though we have aimed to keep the coupling between our components below, then they still need to interact. The interaction between our components is formalized through same-language interfaces.
+However, even though we have aimed to keep the coupling between our components low, they still need to interact. The interaction between our components is formalized through same-language interfaces.
 
-TypeScript handles these interfaces by default, and can be extracted directly from the source code in files with the extenstion `.d.ts`. These files contains the pubplicly exposed methods and fields from each component. Below can be seen a snippet from the Utils-component interface:
+TypeScript handles these interfaces by default, and these can be extracted directly from the source code in files with the extenstion `.d.ts`. These files contain the publicly exposed methods and fields from each component. Below can be seen a snippet from the Utils-component interface:
 
 ```typescript
 ...
@@ -87,7 +87,7 @@ declare module 'utils/getUserBySession' {
 
 These files can be extracted through the command `yarn interface` and will even include related comments for each item in the interface (if any).
 
-This will allow developers to get a overview of what each component does and what it exposes. However, this is generally not needed since these interfaces are deeply integrated into the editor that we use for this project (Visual Studio Code), which means that the documentation of used functions can be seen directly in the context of where they are used. See the image below for an example, where the interface of the addMessage() function from the DBUtils component can be seen in the context of where it is used in the Routes component.
+This will allow developers to get a overview of what each component does and what it exposes. However, this is generally not needed since these interfaces are deeply integrated into the editor that we use for this project (Visual Studio Code), which means that the documentation of used functions can be seen directly in the context of where they are used. See the image below for an example, where the interface of the `addMessage()` function from the DBUtils component can be seen in the context of where it is used in the Routes component.
 
 ![Interface](./images/interface.png)
 
@@ -95,26 +95,26 @@ This will allow developers to get a overview of what each component does and wha
 
 Publicly we also expose a set of endpoints that can be used to interact with our system through REST operations. These endpoints would ideally also have an interface available such that external developers would know how to interact with our system.
 
-Such an interface however has not been constructed, and the reason for this is that our API should not be used by other developers than those who invented the Simulator, and they were the ones providing an interface to us that our API should adhere to.
+Such an interface however has not been constructed because our API should not be used by developers other than those who invented the Simulator, and they were the ones providing the interface our API should adhere to.
 
 ### Current state
 
-Now that the our Minitwit project has ended, it is also time to assses the state of our application, and we believe that our is in a good state in terms of maintainability, reliability, portability and modifiability.
+Now that the our MiniTwit project has ended, it is also time to assess the state of our application, and we believe that our system is in a good state in terms of maintainability, reliability, portability and modifiability.
 
 We base these claims on the following:
 
-* We have had static analysis of our source code since the initial refactoring. This has allowed us to catch code smells during development and enforce a strict ruleset of how code is written in this project to avoid arguments regarding proper formatting while (hopefully) allowing different developers to understand each others code easilier. This has been done to improve maintainability
-* We have employed static analysis and system testing in our CI pipeline, which will stop deployments in case our application fails in any way. This is done to improve the reliability of our project.
-* Our application runs in Docker containers which means that there are no strict requirements to the operating system other than it should be able to run Docker. This is done to improve the portability of our project.
-* The design of our system, as described in the previous sections, has been made to improve modifiability and maintainability of the project.
-* As far as we have been able to monitor ourselves then we have been able to keep our SLA, which can be seen as our application is reliable.
+* We have had static analysis of our source code since the initial refactoring. This has allowed us to catch code smells during development and enforced a strict ruleset of how code is written in this project to avoid arguments regarding proper formatting while (hopefully) allowing different developers to understand each others' code more easily. This was done to improve maintainability.
+* We have employed static analysis and system testing in our CI pipeline, which will stop deployments in case our application fails in any way. This was done to improve the reliability of our project.
+* Our application runs in Docker containers which means that there are no strict requirements to the operating system other than being able to run Docker. This was done to improve the portability of our project.
+* The design of our system, as described in the previous sections, was made to improve modifiability and maintainability of the project.
+* As far as we have been able to monitor ourselves we have been able to live up to our SLA, which can be seen as our application being reliable.
 
-However, it should also be noted that we believe that another important reason of why we believe that this project is in a good state is due to the relatively small size of the project. In case the project were to evolve over several years, then the technical debt should be repayed frequently in order to avoid the system deteriorating over time.
+However, it should also be noted that we believe that another important reason of why we believe that this project is in a good state is due to the relatively small size of the project. In case the project were to evolve over several years, then the technical debt should be repaid frequently in order to avoid the system deteriorating over time.
 
-Finally there are also some clear issuse with the system that should be dealt with relatively soon if the state of the system should remain. These are as follows:
+Finally there are also some clear issues with the system that should be dealt with relatively soon if the state of the system should remain. These are as follows:
 
-* Documentation is poor. There are few comments in the source code described why choices have been made and the README.md could be improved to ease onboarding of new developers.
-* While some of the most pressing security matters found during our security review has been fixed, then some still exists and they should be dealt with. This has been discussed in our Security Report.
-* SonarCloud.io reports that there are 2 hours of technical debt, 2.8% code duplication and 1 minor bug, which can be seen in the image below. While this is relatively minor issues with regards to the quality of the project, then they still exist and may potentially 'snowball' in the future and therefore should be dealt with as soon as possible.
+* Documentation is poor. There are few comments in the source code describing why choices have been made and the README.md could be improved to ease onboarding of new developers.
+* While some of the most pressing security matters found during our security review has been fixed, some still exist and these should be dealt with. This has been discussed in our Security Report.
+* SonarCloud.io reports that there are 2 hours of technical debt, 2.8% code duplication and 1 minor bug, which can be seen in the image below. While these are relatively minor issues with regards to the quality of the project, they still exist and may potentially 'snowball' in the future and therefore should be dealt with as soon as possible. It is worth noting that 6 of the 13 code smells are mentioned due to a mismatch of the exported variable and the name of the file for 6 different files corresponding to end points.
 
 ![Sonar cloud quality assessment](./images/sonarcloud.png)
