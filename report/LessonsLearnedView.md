@@ -1,17 +1,34 @@
 ## Lessons learned
 
-### 'It works on my machine'
+### Working in an unfamiliar environment
 
-* We have had plenty of issues in regards to getting everything to run on all of our machines. (Include screenshots from Slack?)
-* It's difficult to help with limited resources and being forced to work apart at all times (Draw parallels to remote development IRL?)
+* Linux
 
 ### Servers are not black magic
 
 * Once you grasp basic concepts (SSH, SCP, Linux, etc.) then it is easy to figure out how to get your code running on another machine.
 
-### More
+### 'It works on my machine'
 
-What else have we learned???
+* We have had plenty of issues in regards to getting everything to run on all of our machines. (Include screenshots from Slack?)
+* It's difficult to help with limited resources and being forced to work apart at all times (Draw parallels to remote development IRL?)
+
+- Screenshot af Slack for at vise problematikker.
+
+### Distributed DevOps
+
+* COVID-19
+
+### Deployment strategies, load-balancing and scaling
+
+* Docker Swarm
+
+https://github.com/minitwit-tdb/DevOps/commit/e587f900f1ed05fa671fa6bde5b04a05c47fbc28
+
+### Logging and monitoring
+
+* What and why?
+* GDPR
 
 ## Reflection
 

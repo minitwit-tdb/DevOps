@@ -4,9 +4,7 @@
 
 In this section we will discuss how our MiniTwit implementation works from a high level perspective, including its overall interaction with different systems.
 
-During the initial refactoring of MiniTwit we opted to use TypeScript as the
-coding language and Node.JS as an environment to execute the written code on a
-backend. To store data we have opted for a MariaDB database.
+During the initial refactoring of MiniTwit we opted to use TypeScript as the coding language and Node.JS as an environment to execute the written code on a backend. To store data we have opted for a MariaDB database. The reason we opted for TypeScript in this project was due to two reasons. Firstly, most of our groups members haven't used TypeScript before, but found it interesting to learn a new language. Secondly, TypeScript is strongly typed in contrast to regular JavaScript which we believe would help improve our maintainability and allow other developers to more easily understand each others code.
 
 Our application was then dockerized in order to easily deploy our application on
 different servers based on our needs. Furthermore, to orchestrate our application
@@ -49,13 +47,13 @@ The interfaces between the components displayed in the Component Diagram will be
 
 ### Dependencies
 
-The dependency graph for our Minitwit application can be seen in the Directed Acylic Graph below, where the green edges visualise dependencies used during development and the red edges visualise run-time dependencies.
+The dependency graph for our MiniTwit application can be seen in the Directed Acyclic Graph below, where the green edges visualise dependencies used during development and the red edges visualise run-time dependencies.
 
 ![Dependency graph](images/deps.svg)
 
 The following interesting observations can be made from the image above:
 
-* There are a few bi-directional dependencies between our own subsystems (e.g. Database utilities and Models). These components depend on little from each other and, given more time, could be refactored to achieve even cleaner subsystem interfaces to both ease understandability and reducing coupling. In the scenario above the Models-component could be refactored to not depend on DBUtils.
+* There are a few bi-directional dependencies between our own subsystems (e.g. Database utilities and Models). These components depend a little on each other and, given more time, could be refactored to achieve even cleaner subsystem interfaces to both ease understandability and reducing coupling. In the scenario above the Models-component could be refactored to not depend on DBUtils.
 * Generally dependencies between components are uni-directional, which is purposely done to increase the maintainability of the code.
 
 ### Subsystem Interactions
@@ -107,14 +105,14 @@ We base these claims on the following:
 * We have employed static analysis and system testing in our CI pipeline, which will stop deployments in case our application fails in any way. This was done to improve the reliability of our project.
 * Our application runs in Docker containers which means that there are no strict requirements to the operating system other than being able to run Docker. This was done to improve the portability of our project.
 * The design of our system, as described in the previous sections, was made to improve modifiability and maintainability of the project.
-* As far as we have been able to monitor ourselves we have been able to live up to our SLA, which can be seen as our application being reliable.
+* As far as we have been able to monitor ourselves we have been able to live up to our SLA (See GitHub Wiki), which can be seen as our application being reliable.
 
-However, it should also be noted that we believe that another important reason of why we believe that this project is in a good state is due to the relatively small size of the project. In case the project were to evolve over several years, then the technical debt should be repaid frequently in order to avoid the system deteriorating over time.
+However, it should also be noted that another important reason for why we believe that this project is in a good state is due to the relatively small size of the project. In case the project were to evolve over several years, then the technical debt should be repaid frequently in order to avoid the system deteriorating over time.
 
 Finally there are also some clear issues with the system that should be dealt with relatively soon if the state of the system should remain. These are as follows:
 
 * Documentation is poor. There are few comments in the source code describing why choices have been made and the README.md could be improved to ease onboarding of new developers.
-* While some of the most pressing security matters found during our security review has been fixed, some still exist and these should be dealt with. This has been discussed in our Security Report.
+* While some of the most pressing security matters found during our security review has been fixed, some still exist and these should be dealt with. This has been discussed in our [Security Report](../DevOps___Security.pdf).
 * SonarCloud.io reports that there are 2 hours of technical debt, 2.8% code duplication and 1 minor bug, which can be seen in the image below. While these are relatively minor issues with regards to the quality of the project, they still exist and may potentially 'snowball' in the future and therefore should be dealt with as soon as possible. It is worth noting that 6 of the 13 code smells are mentioned due to a mismatch of the exported variable and the name of the file for 6 different files corresponding to end points.
 
 ![Sonar cloud quality assessment](./images/sonarcloud.png)
