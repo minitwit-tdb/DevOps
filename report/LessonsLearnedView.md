@@ -2,38 +2,55 @@
 
 ### Working in an unfamiliar environment
 
-* Linux
+A few of us have never touched Linux before as an operating system,
+this meant we had to figure out and learn Linux as an OS and the commands
+as well as learning parrellel with the course material of DevOps.
+This meant we had to learn fast and seek out information even faster.
+In hindsight we can confidently say we have gotten a better familiarity
+with package managers and Linux' built-in terminal.
 
 ### Servers are not black magic
 
-* Once you grasp basic concepts (SSH, SCP, Linux, etc.) then it is easy to figure out how to get your code running on another machine.
+We had never really spent that much time in the Operations aspect of DevOps before this course. Therefore, figuring out exactly how to get our code up and running on another machine seemed a bit daunting, especially when we considered how to do it in a portable fashion.
+
+However, when we learned basic concepts such as SSH, SCP, Unix commands, etc. it quickly turned out to not be that different running our code on a server than on our own local machines.
+
+DevOps allowed us to strengthen this link between our code on our local machines and the code running on our server even more. Virtualization through Docker made it as easy as running the command `docker-compose up -d` on the server.
 
 ### 'It works on my machine'
 
-* We have had plenty of issues in regards to getting everything to run on all of our machines. (Include screenshots from Slack?)
-* It's difficult to help with limited resources and being forced to work apart at all times (Draw parallels to remote development IRL?)
-
-- Screenshot af Slack for at vise problematikker.
+A common problem which we ourselves weren't free from. Several times during
+the project we had the problem that it worked on one machine, but none
+of the others. One of the supposed reasons at some point was that we were
+working in between operating systems. This included Mac, Linux and Windows.
+This occoured more than once. Which led to the group having to try and
+figure out why it broke on certain machines and not others. From this
+we have learnt to be vigilant when it comes to rolling builds, as a successfull
+build on one end, may not be successful on the other.
 
 ### Distributed DevOps
 
-* COVID-19
+Due to conflicting schedules, and later COVID-19, we had to use tools related to working in a distributed environment to a larger degree than we were used to. This made Slack and our Git-Flow strategy even more important, and made CI/CD even more beneficial than normally, as it made sure that we caught issues and automated things that might have slipped by or have been forgotten when no one was around to catch it.
 
 ### Deployment strategies, load-balancing and scaling
 
-* Docker Swarm
+Before starting this course none of us knew how to properly scale and load-balance a service. Therefore we believed that integrating such a feature into existing applications would require major reconstruction.
 
-https://github.com/minitwit-tdb/DevOps/commit/e587f900f1ed05fa671fa6bde5b04a05c47fbc28
+However, we learned just how much Docker Swarm provides out of the box (rolling updates, load-balanncing and scaling) and how simply it was to actually integrate with our services. As seen in the [pull-request merge](https://github.com/minitwit-tdb/DevOps/commit/e587f900f1ed05fa671fa6bde5b04a05c47fbc28) then the feature only included 12 lines of new code and some minor configurations on our servers.
 
 ### Logging and monitoring
 
-* What and why?
-* GDPR
+We learned about a lot regarding monitoring and logging. A standard format of logs to help make them easily digestible and more tool friendly. Logs are generated based on the use of a system and this can cause parts of the system to become memory starved.
+
+When we had to add logging to our system, the potential for sensitive data to show up in logs was a previously unknown factor.
+
+In these times where GDPR exists, there needs to be some way of handling this sensitive data. We opted to minimise the sensitive data we store.
+Monitoring is about more than looking at the speed or usage of a system. Merely having tools that observe your system is insufficient to be called monitoring as the output needs to be observed to have influence. Monitoring lets DevOps employees find errors in the system, realise a service isn't running and lets these issues be fixed quicker.
 
 ## Reflection
 
-Also reflect and describe what was the "DevOps" style of your work. For example, what did you do differently to previous development projects and how did it work?
 
-* Never had a big focus on operations before
-* CI/CD allows us, as developers, to almost forget about the operations aspect. It just works
-* Focus on writing maintainable code
+
+* Never had a big focus on operations before (we deployed it).
+* CI/CD allows us, as developers, to almost. forget about the operations aspect. It just works
+* Focus on writing maintainable code.
