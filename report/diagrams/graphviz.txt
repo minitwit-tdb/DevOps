@@ -1,0 +1,74 @@
+digraph G {
+"API Test" -> "Docker"  [color="0.002 0.999 0.999"]
+"API Test" -> "requests"  [color="0.002 0.999 0.999"]
+"API Test" -> "API"  [color="0.002 0.999 0.999"]
+
+"MiniTwit" -> "API" [color="0.002 0.999 0.999"]
+"MiniTwit" -> "Backend" [color="0.002 0.999 0.999"]
+"MiniTwit" -> "FlagTool" [color="0.002 0.999 0.999"]
+"MiniTwit" -> "TypeScript" [color="0.348 0.839 0.839"]
+"MiniTwit" -> "NodeJS" [color="0.002 0.999 0.999"]
+"MiniTwit" -> "Docker" [color="0.002 0.999 0.999"]
+"MiniTwit" -> "ESLint" [color="0.348 0.839 0.839"]
+"MiniTwit" -> "Nodemon" [color="0.348 0.839 0.839"]
+"TypeScript" -> "NodeJS" [color="0.348 0.839 0.839"]
+"TypeScript" -> "@types/*" [color="0.348 0.839 0.839"]
+"Docker" -> "Linux" [color="0.002 0.999 0.999"]
+"NodeJS" -> "Linux" [color="0.002 0.999 0.999"]
+
+"ESLint" -> "eslint-plugin-import" [color="0.348 0.839 0.839"]
+"ESLint" -> "eslint-plugin-node" [color="0.348 0.839 0.839"]
+"ESLint" -> "eslint-plugin-promise" [color="0.348 0.839 0.839"]
+"ESLint" -> "eslint-plugin-security" [color="0.348 0.839 0.839"]
+"ESLint" -> "eslint-plugin-standard" [color="0.348 0.839 0.839"]
+
+
+"FlagTool" -> "DBUtils" [color="0.002 0.999 0.999"]
+"FlagTool" -> "Models" [color="0.002 0.999 0.999"]
+"FlagTool" -> "Sequelize" [color="0.002 0.999 0.999"]
+
+"Sequelize" -> "MariaDB"  [color="0.002 0.999 0.999"]
+
+"API" -> "Routes" [color="0.002 0.999 0.999"]
+"API" -> "Utils" [color="0.002 0.999 0.999"]
+"API" -> "DBUtils" [color="0.002 0.999 0.999"]
+"API" -> "Models" [color="0.002 0.999 0.999"]
+"API" -> "Routes" [color="0.002 0.999 0.999"]
+"API" -> "express-prom-bundle" [color="0.002 0.999 0.999"]
+"API" -> "express" [color="0.002 0.999 0.999"]
+"API" -> "http-graceful-shutdown" [color="0.002 0.999 0.999"]
+"API"-> "express-session" [color="0.002 0.999 0.999"]
+"API" -> "cookie-parser" [color="0.002 0.999 0.999"]
+"API" -> "body-parser" [color="0.002 0.999 0.999"]
+"API" -> "nunjucks" [color="0.002 0.999 0.999"]
+
+"Backend" -> "Routes" [color="0.002 0.999 0.999"]
+"Backend" -> "Utils" [color="0.002 0.999 0.999"]
+"Backend" -> "DBUtils" [color="0.002 0.999 0.999"]
+"Backend" -> "Models" [color="0.002 0.999 0.999"]
+"Backend" -> "Routes" [color="0.002 0.999 0.999"]
+"Backend" -> "express-prom-bundle" [color="0.002 0.999 0.999"]
+"Backend" -> "express" [color="0.002 0.999 0.999"]
+"Backend" -> "http-graceful-shutdown" [color="0.002 0.999 0.999"]
+"Backend" -> "express-session" [color="0.002 0.999 0.999"]
+"Backend" -> "cookie-parser" [color="0.002 0.999 0.999"]
+"Backend" -> "body-parser" [color="0.002 0.999 0.999"]
+"Backend" -> "nunjucks" [color="0.002 0.999 0.999"]
+
+"Routes" -> "express" [color="0.002 0.999 0.999"]
+"Routes" -> "Utils"  [color="0.002 0.999 0.999"]
+"Routes" -> "DBUtils"  [color="0.002 0.999 0.999"]
+
+"Models" -> "Sequelize"  [color="0.002 0.999 0.999"]
+"Models" -> "DBUtils"  [color="0.002 0.999 0.999"]
+
+"DBUtils" -> "Sequelize" [color="0.002 0.999 0.999"]
+"DBUtils" -> "Models" [color="0.002 0.999 0.999"]
+"DBUtils" -> "Config" [color="0.002 0.999 0.999"]
+
+
+"Utils" -> "Crypto"  [color="0.002 0.999 0.999"]
+"Utils" -> "Winstom" [color="0.002 0.999 0.999"]
+"Utils" -> "Config" [color="0.002 0.999 0.999"]
+"Utils" -> "Path"  [color="0.002 0.999 0.999"]
+}
