@@ -1,0 +1,481 @@
+<svg width="2713pt" height="476pt" viewBox="0.00 0.00 2713.00 476.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 472)">
+<title>G</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-472 2710,-472 2710,5 -4,5"></polygon>
+<!-- API Test -->
+<g id="node1" class="node"><title>API Test</title>
+<ellipse fill="none" stroke="black" cx="2489" cy="-450" rx="45.4453" ry="18"></ellipse>
+<text text-anchor="middle" x="2489" y="-445.8" font-family="Times,serif" font-size="14.00">API Test</text>
+</g>
+<!-- Docker -->
+<g id="node3" class="node"><title>Docker</title>
+<ellipse fill="none" stroke="black" cx="2489" cy="-378" rx="39.1799" ry="18"></ellipse>
+<text text-anchor="middle" x="2489" y="-373.8" font-family="Times,serif" font-size="14.00">Docker</text>
+</g>
+<!-- API Test&#45;&gt;Docker -->
+<g id="edge2" class="edge"><title>API Test-&gt;Docker</title>
+<path fill="none" stroke="#fe0300" d="M2489,-431.697C2489,-423.983 2489,-414.712 2489,-406.112"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2492.5,-406.104 2489,-396.104 2485.5,-406.104 2492.5,-406.104"></polygon>
+</g>
+<!-- requests -->
+<g id="node5" class="node"><title>requests</title>
+<ellipse fill="none" stroke="black" cx="2589" cy="-378" rx="42.5141" ry="18"></ellipse>
+<text text-anchor="middle" x="2589" y="-373.8" font-family="Times,serif" font-size="14.00">requests</text>
+</g>
+<!-- API Test&#45;&gt;requests -->
+<g id="edge4" class="edge"><title>API Test-&gt;requests</title>
+<path fill="none" stroke="#fe0300" d="M2510.7,-433.811C2525.04,-423.769 2544.03,-410.482 2559.71,-399.505"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2561.84,-402.282 2568.03,-393.68 2557.83,-396.547 2561.84,-402.282"></polygon>
+</g>
+<!-- API -->
+<g id="node7" class="node"><title>API</title>
+<ellipse fill="none" stroke="black" cx="2052" cy="-378" rx="27" ry="18"></ellipse>
+<text text-anchor="middle" x="2052" y="-373.8" font-family="Times,serif" font-size="14.00">API</text>
+</g>
+<!-- API Test&#45;&gt;API -->
+<g id="edge6" class="edge"><title>API Test-&gt;API</title>
+<path fill="none" stroke="#fe0300" d="M2447.89,-442.415C2362.79,-428.783 2168.57,-397.673 2088.03,-384.771"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2088.32,-381.273 2077.89,-383.147 2087.21,-388.185 2088.32,-381.273"></polygon>
+</g>
+<!-- Linux -->
+<g id="node27" class="node"><title>Linux</title>
+<ellipse fill="none" stroke="black" cx="2671" cy="-234" rx="34.1577" ry="18"></ellipse>
+<text text-anchor="middle" x="2671" y="-229.8" font-family="Times,serif" font-size="14.00">Linux</text>
+</g>
+<!-- Docker&#45;&gt;Linux -->
+<g id="edge28" class="edge"><title>Docker-&gt;Linux</title>
+<path fill="none" stroke="#fe0300" d="M2518.54,-365.99C2524.61,-363.884 2530.98,-361.783 2537,-360 2602.74,-340.529 2644.55,-377.84 2687,-324 2701.14,-306.071 2694.05,-279.79 2685.29,-260.433"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2688.35,-258.723 2680.8,-251.288 2682.06,-261.807 2688.35,-258.723"></polygon>
+</g>
+<!-- DBUtils -->
+<g id="node40" class="node"><title>DBUtils</title>
+<ellipse fill="none" stroke="black" cx="1191" cy="-234" rx="43.3396" ry="18"></ellipse>
+<text text-anchor="middle" x="1191" y="-229.8" font-family="Times,serif" font-size="14.00">DBUtils</text>
+</g>
+<!-- API&#45;&gt;DBUtils -->
+<g id="edge54" class="edge"><title>API-&gt;DBUtils</title>
+<path fill="none" stroke="#fe0300" d="M2079.1,-376.687C2160.33,-374.912 2391.83,-363.286 2320,-288 2282.47,-248.672 1463.8,-237.716 1244.59,-235.483"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1244.34,-231.98 1234.3,-235.38 1244.27,-238.98 1244.34,-231.98"></polygon>
+</g>
+<!-- Models -->
+<g id="node42" class="node"><title>Models</title>
+<ellipse fill="none" stroke="black" cx="1123" cy="-162" rx="40.0052" ry="18"></ellipse>
+<text text-anchor="middle" x="1123" y="-157.8" font-family="Times,serif" font-size="14.00">Models</text>
+</g>
+<!-- API&#45;&gt;Models -->
+<g id="edge56" class="edge"><title>API-&gt;Models</title>
+<path fill="none" stroke="#fe0300" d="M2078.65,-374.534C2151.9,-367.492 2352.06,-346.351 2371,-324 2381.35,-311.794 2380.75,-300.683 2371,-288 2295.03,-189.21 2223.09,-235.478 2100,-216 1918.52,-187.283 1346.09,-169.253 1173.04,-164.355"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1173.03,-160.853 1162.94,-164.071 1172.83,-167.851 1173.03,-160.853"></polygon>
+</g>
+<!-- Routes -->
+<g id="node48" class="node"><title>Routes</title>
+<ellipse fill="none" stroke="black" cx="2052" cy="-306" rx="37.2916" ry="18"></ellipse>
+<text text-anchor="middle" x="2052" y="-301.8" font-family="Times,serif" font-size="14.00">Routes</text>
+</g>
+<!-- API&#45;&gt;Routes -->
+<g id="edge50" class="edge"><title>API-&gt;Routes</title>
+<path fill="none" stroke="#fe0300" d="M2046.16,-360.411C2045.3,-352.507 2045.05,-342.852 2045.41,-333.935"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2048.9,-334.179 2046.12,-323.956 2041.92,-333.683 2048.9,-334.179"></polygon>
+</g>
+<!-- API&#45;&gt;Routes -->
+<g id="edge58" class="edge"><title>API-&gt;Routes</title>
+<path fill="none" stroke="#fe0300" d="M2057.84,-360.411C2058.7,-352.507 2058.95,-342.852 2058.59,-333.935"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2062.08,-333.683 2057.88,-323.956 2055.1,-334.179 2062.08,-333.683"></polygon>
+</g>
+<!-- Utils -->
+<g id="node50" class="node"><title>Utils</title>
+<ellipse fill="none" stroke="black" cx="2454" cy="-234" rx="29.2253" ry="18"></ellipse>
+<text text-anchor="middle" x="2454" y="-229.8" font-family="Times,serif" font-size="14.00">Utils</text>
+</g>
+<!-- API&#45;&gt;Utils -->
+<g id="edge52" class="edge"><title>API-&gt;Utils</title>
+<path fill="none" stroke="#fe0300" d="M2078.75,-374.948C2160.58,-368.438 2403.61,-347.302 2430,-324 2447.29,-308.736 2452.72,-282.456 2454.16,-262.399"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2457.66,-262.429 2454.6,-252.287 2450.67,-262.126 2457.66,-262.429"></polygon>
+</g>
+<!-- express&#45;prom&#45;bundle -->
+<g id="node55" class="node"><title>express-prom-bundle</title>
+<ellipse fill="none" stroke="black" cx="1355" cy="-306" rx="93.1359" ry="18"></ellipse>
+<text text-anchor="middle" x="1355" y="-301.8" font-family="Times,serif" font-size="14.00">express-prom-bundle</text>
+</g>
+<!-- API&#45;&gt;express&#45;prom&#45;bundle -->
+<g id="edge60" class="edge"><title>API-&gt;express-prom-bundle</title>
+<path fill="none" stroke="#fe0300" d="M2025.23,-375.347C1941.26,-370.004 1675.6,-351.912 1457,-324 1448.62,-322.93 1439.87,-321.678 1431.17,-320.348"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1431.43,-316.846 1421.01,-318.757 1430.35,-323.762 1431.43,-316.846"></polygon>
+</g>
+<!-- express -->
+<g id="node57" class="node"><title>express</title>
+<ellipse fill="none" stroke="black" cx="2052" cy="-234" rx="39.4894" ry="18"></ellipse>
+<text text-anchor="middle" x="2052" y="-229.8" font-family="Times,serif" font-size="14.00">express</text>
+</g>
+<!-- API&#45;&gt;express -->
+<g id="edge62" class="edge"><title>API-&gt;express</title>
+<path fill="none" stroke="#fe0300" d="M2079,-376.503C2146.36,-374.634 2318.91,-365.783 2354,-324 2364.29,-311.747 2364.29,-300.253 2354,-288 2322.37,-250.332 2179.02,-239.429 2101.74,-236.278"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2101.42,-232.763 2091.29,-235.882 2101.15,-239.758 2101.42,-232.763"></polygon>
+</g>
+<!-- http&#45;graceful&#45;shutdown -->
+<g id="node59" class="node"><title>http-graceful-shutdown</title>
+<ellipse fill="none" stroke="black" cx="2210" cy="-306" rx="101.51" ry="18"></ellipse>
+<text text-anchor="middle" x="2210" y="-301.8" font-family="Times,serif" font-size="14.00">http-graceful-shutdown</text>
+</g>
+<!-- API&#45;&gt;http&#45;graceful&#45;shutdown -->
+<g id="edge64" class="edge"><title>API-&gt;http-graceful-shutdown</title>
+<path fill="none" stroke="#fe0300" d="M2073.97,-367.267C2097.31,-356.928 2134.86,-340.291 2164.6,-327.113"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2166.23,-330.22 2173.96,-322.969 2163.4,-323.82 2166.23,-330.22"></polygon>
+</g>
+<!-- express&#45;session -->
+<g id="node61" class="node"><title>express-session</title>
+<ellipse fill="none" stroke="black" cx="1537" cy="-306" rx="71.1527" ry="18"></ellipse>
+<text text-anchor="middle" x="1537" y="-301.8" font-family="Times,serif" font-size="14.00">express-session</text>
+</g>
+<!-- API&#45;&gt;express&#45;session -->
+<g id="edge66" class="edge"><title>API-&gt;express-session</title>
+<path fill="none" stroke="#fe0300" d="M2025.4,-374.584C1957.24,-368.212 1770.84,-349.665 1617,-324 1610.84,-322.973 1604.44,-321.797 1598.06,-320.553"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1598.58,-317.088 1588.09,-318.556 1597.2,-323.952 1598.58,-317.088"></polygon>
+</g>
+<!-- cookie&#45;parser -->
+<g id="node63" class="node"><title>cookie-parser</title>
+<ellipse fill="none" stroke="black" cx="1690" cy="-306" rx="63.3711" ry="18"></ellipse>
+<text text-anchor="middle" x="1690" y="-301.8" font-family="Times,serif" font-size="14.00">cookie-parser</text>
+</g>
+<!-- API&#45;&gt;cookie&#45;parser -->
+<g id="edge68" class="edge"><title>API-&gt;cookie-parser</title>
+<path fill="none" stroke="#fe0300" d="M2026.01,-372.66C1975.3,-364.095 1859.64,-344.102 1763,-324 1757.67,-322.89 1752.12,-321.689 1746.58,-320.455"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1747.18,-317.003 1736.66,-318.213 1745.64,-323.831 1747.18,-317.003"></polygon>
+</g>
+<!-- body&#45;parser -->
+<g id="node65" class="node"><title>body-parser</title>
+<ellipse fill="none" stroke="black" cx="1829" cy="-306" rx="57.2286" ry="18"></ellipse>
+<text text-anchor="middle" x="1829" y="-301.8" font-family="Times,serif" font-size="14.00">body-parser</text>
+</g>
+<!-- API&#45;&gt;body&#45;parser -->
+<g id="edge70" class="edge"><title>API-&gt;body-parser</title>
+<path fill="none" stroke="#fe0300" d="M2028.14,-369.509C1992.36,-358.28 1924.09,-336.848 1877.56,-322.243"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1878.57,-318.891 1867.98,-319.236 1876.47,-325.57 1878.57,-318.891"></polygon>
+</g>
+<!-- nunjucks -->
+<g id="node67" class="node"><title>nunjucks</title>
+<ellipse fill="none" stroke="black" cx="1950" cy="-306" rx="45.3584" ry="18"></ellipse>
+<text text-anchor="middle" x="1950" y="-301.8" font-family="Times,serif" font-size="14.00">nunjucks</text>
+</g>
+<!-- API&#45;&gt;nunjucks -->
+<g id="edge72" class="edge"><title>API-&gt;nunjucks</title>
+<path fill="none" stroke="#fe0300" d="M2033.76,-364.485C2018.93,-354.305 1997.68,-339.723 1980.3,-327.794"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1981.84,-324.607 1971.62,-321.834 1977.88,-330.379 1981.84,-324.607"></polygon>
+</g>
+<!-- MiniTwit -->
+<g id="node8" class="node"><title>MiniTwit</title>
+<ellipse fill="none" stroke="black" cx="1871" cy="-450" rx="48.0817" ry="18"></ellipse>
+<text text-anchor="middle" x="1871" y="-445.8" font-family="Times,serif" font-size="14.00">MiniTwit</text>
+</g>
+<!-- MiniTwit&#45;&gt;Docker -->
+<g id="edge18" class="edge"><title>MiniTwit-&gt;Docker</title>
+<path fill="none" stroke="#fe0300" d="M1918.76,-448.003C2016.72,-445.197 2247.07,-434.685 2436,-396 2440.43,-395.092 2445.02,-393.948 2449.55,-392.684"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2450.73,-395.984 2459.31,-389.77 2448.73,-389.277 2450.73,-395.984"></polygon>
+</g>
+<!-- MiniTwit&#45;&gt;API -->
+<g id="edge8" class="edge"><title>MiniTwit-&gt;API</title>
+<path fill="none" stroke="#fe0300" d="M1903.36,-436.485C1936.16,-423.798 1986.65,-404.275 2019.5,-391.568"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2021.03,-394.73 2029.09,-387.859 2018.5,-388.202 2021.03,-394.73"></polygon>
+</g>
+<!-- Backend -->
+<g id="node11" class="node"><title>Backend</title>
+<ellipse fill="none" stroke="black" cx="1690" cy="-378" rx="44.2358" ry="18"></ellipse>
+<text text-anchor="middle" x="1690" y="-373.8" font-family="Times,serif" font-size="14.00">Backend</text>
+</g>
+<!-- MiniTwit&#45;&gt;Backend -->
+<g id="edge10" class="edge"><title>MiniTwit-&gt;Backend</title>
+<path fill="none" stroke="#fe0300" d="M1838.64,-436.485C1808.51,-424.832 1763.46,-407.41 1730.86,-394.802"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1731.76,-391.398 1721.17,-391.055 1729.24,-397.927 1731.76,-391.398"></polygon>
+</g>
+<!-- FlagTool -->
+<g id="node13" class="node"><title>FlagTool</title>
+<ellipse fill="none" stroke="black" cx="46" cy="-306" rx="46.1659" ry="18"></ellipse>
+<text text-anchor="middle" x="46" y="-301.8" font-family="Times,serif" font-size="14.00">FlagTool</text>
+</g>
+<!-- MiniTwit&#45;&gt;FlagTool -->
+<g id="edge12" class="edge"><title>MiniTwit-&gt;FlagTool</title>
+<path fill="none" stroke="#fe0300" d="M1822.9,-448.375C1659.3,-445.933 1109.41,-435.149 657,-396 409.192,-374.556 345.172,-376.306 102,-324 98.0888,-323.159 94.056,-322.174 90.0315,-321.11"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="90.6918,-317.66 80.1187,-318.338 88.8066,-324.402 90.6918,-317.66"></polygon>
+</g>
+<!-- TypeScript -->
+<g id="node15" class="node"><title>TypeScript</title>
+<ellipse fill="none" stroke="black" cx="2340" cy="-378" rx="53.4184" ry="18"></ellipse>
+<text text-anchor="middle" x="2340" y="-373.8" font-family="Times,serif" font-size="14.00">TypeScript</text>
+</g>
+<!-- MiniTwit&#45;&gt;TypeScript -->
+<g id="edge14" class="edge"><title>MiniTwit-&gt;TypeScript</title>
+<path fill="none" stroke="#22d532" d="M1914.7,-442.477C1999.61,-429.804 2186.87,-401.855 2282.04,-387.651"></path>
+<polygon fill="#22d532" stroke="#22d532" points="2282.69,-391.092 2292.06,-386.154 2281.66,-384.169 2282.69,-391.092"></polygon>
+</g>
+<!-- NodeJS -->
+<g id="node17" class="node"><title>NodeJS</title>
+<ellipse fill="none" stroke="black" cx="2637" cy="-306" rx="41.1132" ry="18"></ellipse>
+<text text-anchor="middle" x="2637" y="-301.8" font-family="Times,serif" font-size="14.00">NodeJS</text>
+</g>
+<!-- MiniTwit&#45;&gt;NodeJS -->
+<g id="edge16" class="edge"><title>MiniTwit-&gt;NodeJS</title>
+<path fill="none" stroke="#fe0300" d="M1918.83,-448.083C2032.59,-445.29 2316.23,-434.554 2402,-396 2423.52,-386.329 2420.24,-371.193 2441,-360 2499.45,-328.493 2522.23,-342.513 2586,-324 2589.33,-323.034 2592.76,-321.991 2596.2,-320.913"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2597.38,-324.21 2605.83,-317.819 2595.24,-317.545 2597.38,-324.21"></polygon>
+</g>
+<!-- ESLint -->
+<g id="node20" class="node"><title>ESLint</title>
+<ellipse fill="none" stroke="black" cx="821" cy="-378" rx="38.1" ry="18"></ellipse>
+<text text-anchor="middle" x="821" y="-373.8" font-family="Times,serif" font-size="14.00">ESLint</text>
+</g>
+<!-- MiniTwit&#45;&gt;ESLint -->
+<g id="edge20" class="edge"><title>MiniTwit-&gt;ESLint</title>
+<path fill="none" stroke="#22d532" d="M1824.19,-445.879C1650.54,-434.303 1044.27,-393.885 868.874,-382.192"></path>
+<polygon fill="#22d532" stroke="#22d532" points="868.882,-378.684 858.671,-381.511 868.416,-385.669 868.882,-378.684"></polygon>
+</g>
+<!-- Nodemon -->
+<g id="node22" class="node"><title>Nodemon</title>
+<ellipse fill="none" stroke="black" cx="715" cy="-378" rx="49.181" ry="18"></ellipse>
+<text text-anchor="middle" x="715" y="-373.8" font-family="Times,serif" font-size="14.00">Nodemon</text>
+</g>
+<!-- MiniTwit&#45;&gt;Nodemon -->
+<g id="edge22" class="edge"><title>MiniTwit-&gt;Nodemon</title>
+<path fill="none" stroke="#22d532" d="M1823.05,-448.164C1639.35,-444.731 980.442,-430.25 774,-396 769.501,-395.254 764.858,-394.282 760.245,-393.181"></path>
+<polygon fill="#22d532" stroke="#22d532" points="760.818,-389.714 750.261,-390.602 759.068,-396.492 760.818,-389.714"></polygon>
+</g>
+<!-- Backend&#45;&gt;DBUtils -->
+<g id="edge78" class="edge"><title>Backend-&gt;DBUtils</title>
+<path fill="none" stroke="#fe0300" d="M1645.97,-375.136C1532.87,-369.939 1238.79,-353.684 1207,-324 1190.46,-308.561 1187.47,-282.303 1188.02,-262.298"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1191.52,-262.401 1188.6,-252.217 1184.53,-262 1191.52,-262.401"></polygon>
+</g>
+<!-- Backend&#45;&gt;Models -->
+<g id="edge80" class="edge"><title>Backend-&gt;Models</title>
+<path fill="none" stroke="#fe0300" d="M1645.54,-377.121C1537.15,-376.669 1262.57,-370.802 1186,-324 1140.2,-296.005 1127.64,-228.547 1124.24,-190.429"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1127.7,-189.779 1123.47,-180.064 1120.72,-190.294 1127.7,-189.779"></polygon>
+</g>
+<!-- Backend&#45;&gt;Routes -->
+<g id="edge74" class="edge"><title>Backend-&gt;Routes</title>
+<path fill="none" stroke="#fe0300" d="M1731.69,-371.538C1790.93,-363.867 1902.15,-348.084 1995,-324 2000.24,-322.64 2005.72,-320.958 2011.15,-319.186"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2012.44,-322.446 2020.81,-315.948 2010.21,-315.81 2012.44,-322.446"></polygon>
+</g>
+<!-- Backend&#45;&gt;Routes -->
+<g id="edge82" class="edge"><title>Backend-&gt;Routes</title>
+<path fill="none" stroke="#fe0300" d="M1732.58,-372.871C1795.08,-365.791 1914.4,-349.576 2013,-324 2014.65,-323.573 2016.32,-323.114 2018,-322.63"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2019.07,-325.963 2027.57,-319.639 2016.98,-319.281 2019.07,-325.963"></polygon>
+</g>
+<!-- Backend&#45;&gt;Utils -->
+<g id="edge76" class="edge"><title>Backend-&gt;Utils</title>
+<path fill="none" stroke="#fe0300" d="M1646.04,-374.919C1540.36,-369.467 1278.82,-353.137 1253,-324 1242.39,-312.025 1241.93,-299.551 1253,-288 1285.59,-253.997 2052.95,-254.13 2100,-252 2214.12,-246.835 2348.91,-240.22 2414.36,-236.975"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2414.82,-240.457 2424.63,-236.465 2414.47,-233.465 2414.82,-240.457"></polygon>
+</g>
+<!-- Backend&#45;&gt;express&#45;prom&#45;bundle -->
+<g id="edge84" class="edge"><title>Backend-&gt;express-prom-bundle</title>
+<path fill="none" stroke="#fe0300" d="M1651.57,-368.97C1596.61,-357.487 1494.62,-336.174 1425.78,-321.79"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1426.38,-318.34 1415.88,-319.72 1424.95,-325.192 1426.38,-318.34"></polygon>
+</g>
+<!-- Backend&#45;&gt;express -->
+<g id="edge86" class="edge"><title>Backend-&gt;express</title>
+<path fill="none" stroke="#fe0300" d="M1646.04,-375.316C1534.65,-370.6 1248.14,-355.495 1220,-324 1209.34,-312.069 1209.05,-299.668 1220,-288 1246.89,-259.345 1827,-241.164 2002.28,-236.309"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2002.61,-239.802 2012.51,-236.029 2002.42,-232.804 2002.61,-239.802"></polygon>
+</g>
+<!-- Backend&#45;&gt;http&#45;graceful&#45;shutdown -->
+<g id="edge88" class="edge"><title>Backend-&gt;http-graceful-shutdown</title>
+<path fill="none" stroke="#fe0300" d="M1732.04,-371.841C1806.06,-362.69 1964.5,-342.801 2098,-324 2107.18,-322.707 2116.77,-321.315 2126.32,-319.902"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2126.86,-323.361 2136.23,-318.427 2125.83,-316.437 2126.86,-323.361"></polygon>
+</g>
+<!-- Backend&#45;&gt;express&#45;session -->
+<g id="edge90" class="edge"><title>Backend-&gt;express-session</title>
+<path fill="none" stroke="#fe0300" d="M1661.58,-363.998C1638.41,-353.398 1605.35,-338.273 1579.11,-326.266"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1580.33,-322.976 1569.78,-321.998 1577.42,-329.341 1580.33,-322.976"></polygon>
+</g>
+<!-- Backend&#45;&gt;cookie&#45;parser -->
+<g id="edge92" class="edge"><title>Backend-&gt;cookie-parser</title>
+<path fill="none" stroke="#fe0300" d="M1690,-359.697C1690,-351.983 1690,-342.712 1690,-334.112"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1693.5,-334.104 1690,-324.104 1686.5,-334.104 1693.5,-334.104"></polygon>
+</g>
+<!-- Backend&#45;&gt;body&#45;parser -->
+<g id="edge94" class="edge"><title>Backend-&gt;body-parser</title>
+<path fill="none" stroke="#fe0300" d="M1716.8,-363.503C1737.83,-352.911 1767.38,-338.029 1790.88,-326.197"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1792.53,-329.287 1799.88,-321.664 1789.38,-323.036 1792.53,-329.287"></polygon>
+</g>
+<!-- Backend&#45;&gt;nunjucks -->
+<g id="edge96" class="edge"><title>Backend-&gt;nunjucks</title>
+<path fill="none" stroke="#fe0300" d="M1727.17,-367.944C1768.35,-357.784 1836.65,-340.552 1895,-324 1898.58,-322.986 1902.27,-321.908 1905.98,-320.805"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1907.18,-324.098 1915.75,-317.859 1905.16,-317.397 1907.18,-324.098"></polygon>
+</g>
+<!-- FlagTool&#45;&gt;DBUtils -->
+<g id="edge42" class="edge"><title>FlagTool-&gt;DBUtils</title>
+<path fill="none" stroke="#fe0300" d="M79.4343,-293.386C86.7871,-291.245 94.5917,-289.283 102,-288 428.634,-231.424 515.898,-268.181 847,-252 950.036,-246.965 1070.43,-240.995 1137.99,-237.638"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1138.55,-241.114 1148.37,-237.122 1138.2,-234.123 1138.55,-241.114"></polygon>
+</g>
+<!-- FlagTool&#45;&gt;Models -->
+<g id="edge44" class="edge"><title>FlagTool-&gt;Models</title>
+<path fill="none" stroke="#fe0300" d="M79.8116,-293.71C87.0715,-291.575 94.7433,-289.534 102,-288 292.26,-247.79 897.739,-185.528 1074.26,-167.836"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1074.69,-171.311 1084.29,-166.833 1073.99,-164.346 1074.69,-171.311"></polygon>
+</g>
+<!-- Sequelize -->
+<g id="node44" class="node"><title>Sequelize</title>
+<ellipse fill="none" stroke="black" cx="1123" cy="-90" rx="48.3636" ry="18"></ellipse>
+<text text-anchor="middle" x="1123" y="-85.8" font-family="Times,serif" font-size="14.00">Sequelize</text>
+</g>
+<!-- FlagTool&#45;&gt;Sequelize -->
+<g id="edge46" class="edge"><title>FlagTool-&gt;Sequelize</title>
+<path fill="none" stroke="#fe0300" d="M79.1119,-293.362C133.131,-274.743 243.851,-238.111 340,-216 609.403,-154.046 937.948,-112.374 1067.08,-97.2853"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1067.6,-100.749 1077.13,-96.1181 1066.79,-93.7955 1067.6,-100.749"></polygon>
+</g>
+<!-- TypeScript&#45;&gt;NodeJS -->
+<g id="edge24" class="edge"><title>TypeScript-&gt;NodeJS</title>
+<path fill="none" stroke="#22d532" d="M2381.28,-366.361C2390.08,-364.182 2399.34,-361.958 2408,-360 2486.73,-342.208 2508.01,-344.801 2586,-324 2589.39,-323.095 2592.89,-322.088 2596.39,-321.029"></path>
+<polygon fill="#22d532" stroke="#22d532" points="2597.68,-324.293 2606.17,-317.95 2595.58,-317.616 2597.68,-324.293"></polygon>
+</g>
+<!-- @types/* -->
+<g id="node25" class="node"><title>@types/*</title>
+<ellipse fill="none" stroke="black" cx="2530" cy="-306" rx="47.2391" ry="18"></ellipse>
+<text text-anchor="middle" x="2530" y="-301.8" font-family="Times,serif" font-size="14.00">@types/*</text>
+</g>
+<!-- TypeScript&#45;&gt;@types/* -->
+<g id="edge26" class="edge"><title>TypeScript-&gt;@types/*</title>
+<path fill="none" stroke="#22d532" d="M2374.85,-364.161C2406.64,-352.45 2453.69,-335.116 2487.63,-322.608"></path>
+<polygon fill="#22d532" stroke="#22d532" points="2489.1,-325.797 2497.28,-319.056 2486.68,-319.229 2489.1,-325.797"></polygon>
+</g>
+<!-- NodeJS&#45;&gt;Linux -->
+<g id="edge30" class="edge"><title>NodeJS-&gt;Linux</title>
+<path fill="none" stroke="#fe0300" d="M2645.23,-288.055C2649.2,-279.887 2654.04,-269.912 2658.46,-260.824"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2661.62,-262.313 2662.85,-251.789 2655.33,-259.255 2661.62,-262.313"></polygon>
+</g>
+<!-- eslint&#45;plugin&#45;import -->
+<g id="node30" class="node"><title>eslint-plugin-import</title>
+<ellipse fill="none" stroke="black" cx="821" cy="-306" rx="88.2316" ry="18"></ellipse>
+<text text-anchor="middle" x="821" y="-301.8" font-family="Times,serif" font-size="14.00">eslint-plugin-import</text>
+</g>
+<!-- ESLint&#45;&gt;eslint&#45;plugin&#45;import -->
+<g id="edge32" class="edge"><title>ESLint-&gt;eslint-plugin-import</title>
+<path fill="none" stroke="#22d532" d="M821,-359.697C821,-351.983 821,-342.712 821,-334.112"></path>
+<polygon fill="#22d532" stroke="#22d532" points="824.5,-334.104 821,-324.104 817.5,-334.104 824.5,-334.104"></polygon>
+</g>
+<!-- eslint&#45;plugin&#45;node -->
+<g id="node32" class="node"><title>eslint-plugin-node</title>
+<ellipse fill="none" stroke="black" cx="1010" cy="-306" rx="81.263" ry="18"></ellipse>
+<text text-anchor="middle" x="1010" y="-301.8" font-family="Times,serif" font-size="14.00">eslint-plugin-node</text>
+</g>
+<!-- ESLint&#45;&gt;eslint&#45;plugin&#45;node -->
+<g id="edge34" class="edge"><title>ESLint-&gt;eslint-plugin-node</title>
+<path fill="none" stroke="#22d532" d="M850.117,-366.216C879.458,-355.349 925.293,-338.373 960.379,-325.378"></path>
+<polygon fill="#22d532" stroke="#22d532" points="961.805,-328.582 969.967,-321.827 959.374,-322.018 961.805,-328.582"></polygon>
+</g>
+<!-- eslint&#45;plugin&#45;promise -->
+<g id="node34" class="node"><title>eslint-plugin-promise</title>
+<ellipse fill="none" stroke="black" cx="205" cy="-306" rx="94.2686" ry="18"></ellipse>
+<text text-anchor="middle" x="205" y="-301.8" font-family="Times,serif" font-size="14.00">eslint-plugin-promise</text>
+</g>
+<!-- ESLint&#45;&gt;eslint&#45;plugin&#45;promise -->
+<g id="edge36" class="edge"><title>ESLint-&gt;eslint-plugin-promise</title>
+<path fill="none" stroke="#22d532" d="M792.928,-365.671C786.474,-363.457 779.573,-361.393 773,-360 570.218,-317.028 513.784,-348.901 308,-324 299.372,-322.956 290.362,-321.707 281.417,-320.365"></path>
+<polygon fill="#22d532" stroke="#22d532" points="281.784,-316.881 271.368,-318.818 280.719,-323.799 281.784,-316.881"></polygon>
+</g>
+<!-- eslint&#45;plugin&#45;security -->
+<g id="node36" class="node"><title>eslint-plugin-security</title>
+<ellipse fill="none" stroke="black" cx="411" cy="-306" rx="93.4555" ry="18"></ellipse>
+<text text-anchor="middle" x="411" y="-301.8" font-family="Times,serif" font-size="14.00">eslint-plugin-security</text>
+</g>
+<!-- ESLint&#45;&gt;eslint&#45;plugin&#45;security -->
+<g id="edge38" class="edge"><title>ESLint-&gt;eslint-plugin-security</title>
+<path fill="none" stroke="#22d532" d="M792.607,-365.876C786.229,-363.679 779.442,-361.57 773,-360 659.658,-332.385 628.324,-341.591 513,-324 505.051,-322.788 496.761,-321.479 488.494,-320.145"></path>
+<polygon fill="#22d532" stroke="#22d532" points="488.876,-316.661 478.444,-318.51 487.752,-323.57 488.876,-316.661"></polygon>
+</g>
+<!-- eslint&#45;plugin&#45;standard -->
+<g id="node38" class="node"><title>eslint-plugin-standard</title>
+<ellipse fill="none" stroke="black" cx="618" cy="-306" rx="95.1744" ry="18"></ellipse>
+<text text-anchor="middle" x="618" y="-301.8" font-family="Times,serif" font-size="14.00">eslint-plugin-standard</text>
+</g>
+<!-- ESLint&#45;&gt;eslint&#45;plugin&#45;standard -->
+<g id="edge40" class="edge"><title>ESLint-&gt;eslint-plugin-standard</title>
+<path fill="none" stroke="#22d532" d="M791.572,-366.52C785.438,-364.352 779.012,-362.092 773,-360 739.578,-348.368 702.026,-335.522 672.256,-325.39"></path>
+<polygon fill="#22d532" stroke="#22d532" points="673.069,-321.97 662.475,-322.064 670.816,-328.597 673.069,-321.97"></polygon>
+</g>
+<!-- DBUtils&#45;&gt;Models -->
+<g id="edge110" class="edge"><title>DBUtils-&gt;Models</title>
+<path fill="none" stroke="#fe0300" d="M1170.57,-217.811C1160.85,-208.927 1149.5,-197.504 1140.22,-187.388"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1142.58,-184.764 1133.31,-179.628 1137.35,-189.422 1142.58,-184.764"></polygon>
+</g>
+<!-- DBUtils&#45;&gt;Sequelize -->
+<g id="edge108" class="edge"><title>DBUtils-&gt;Sequelize</title>
+<path fill="none" stroke="#fe0300" d="M1190.02,-215.691C1188.37,-197.06 1183.93,-167.004 1172,-144 1166.29,-132.986 1157.67,-122.564 1149.24,-113.924"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1151.56,-111.301 1141.96,-106.82 1146.67,-116.31 1151.56,-111.301"></polygon>
+</g>
+<!-- Config -->
+<g id="node88" class="node"><title>Config</title>
+<ellipse fill="none" stroke="black" cx="1758" cy="-162" rx="37.293" ry="18"></ellipse>
+<text text-anchor="middle" x="1758" y="-157.8" font-family="Times,serif" font-size="14.00">Config</text>
+</g>
+<!-- DBUtils&#45;&gt;Config -->
+<g id="edge112" class="edge"><title>DBUtils-&gt;Config</title>
+<path fill="none" stroke="#fe0300" d="M1231.78,-227.966C1334.6,-215.272 1603.94,-182.02 1712.08,-168.669"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1712.54,-172.139 1722.03,-167.44 1711.68,-165.192 1712.54,-172.139"></polygon>
+</g>
+<!-- Models&#45;&gt;DBUtils -->
+<g id="edge106" class="edge"><title>Models-&gt;DBUtils</title>
+<path fill="none" stroke="#fe0300" d="M1143.01,-177.804C1152.89,-186.812 1164.55,-198.534 1174,-208.857"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1171.46,-211.27 1180.72,-216.411 1176.69,-206.615 1171.46,-211.27"></polygon>
+</g>
+<!-- Models&#45;&gt;Sequelize -->
+<g id="edge104" class="edge"><title>Models-&gt;Sequelize</title>
+<path fill="none" stroke="#fe0300" d="M1123,-143.697C1123,-135.983 1123,-126.712 1123,-118.112"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1126.5,-118.104 1123,-108.104 1119.5,-118.104 1126.5,-118.104"></polygon>
+</g>
+<!-- MariaDB -->
+<g id="node46" class="node"><title>MariaDB</title>
+<ellipse fill="none" stroke="black" cx="1123" cy="-18" rx="47.256" ry="18"></ellipse>
+<text text-anchor="middle" x="1123" y="-13.8" font-family="Times,serif" font-size="14.00">MariaDB</text>
+</g>
+<!-- Sequelize&#45;&gt;MariaDB -->
+<g id="edge48" class="edge"><title>Sequelize-&gt;MariaDB</title>
+<path fill="none" stroke="#fe0300" d="M1123,-71.6966C1123,-63.9827 1123,-54.7125 1123,-46.1124"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1126.5,-46.1043 1123,-36.1043 1119.5,-46.1044 1126.5,-46.1043"></polygon>
+</g>
+<!-- Routes&#45;&gt;DBUtils -->
+<g id="edge102" class="edge"><title>Routes-&gt;DBUtils</title>
+<path fill="none" stroke="#fe0300" d="M2024.45,-293.787C2017.85,-291.509 2010.75,-289.388 2004,-288 1857.9,-257.967 1400.73,-241.447 1244.2,-236.559"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1243.99,-233.051 1233.89,-236.24 1243.78,-240.047 1243.99,-233.051"></polygon>
+</g>
+<!-- Routes&#45;&gt;Utils -->
+<g id="edge100" class="edge"><title>Routes-&gt;Utils</title>
+<path fill="none" stroke="#fe0300" d="M2080.05,-293.827C2086.22,-291.658 2092.77,-289.574 2099,-288 2211.74,-259.497 2348.75,-244.386 2414.74,-238.288"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2415.44,-241.739 2425.09,-237.353 2414.81,-234.768 2415.44,-241.739"></polygon>
+</g>
+<!-- Routes&#45;&gt;express -->
+<g id="edge98" class="edge"><title>Routes-&gt;express</title>
+<path fill="none" stroke="#fe0300" d="M2052,-287.697C2052,-279.983 2052,-270.712 2052,-262.112"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2055.5,-262.104 2052,-252.104 2048.5,-262.104 2055.5,-262.104"></polygon>
+</g>
+<!-- Utils&#45;&gt;Config -->
+<g id="edge118" class="edge"><title>Utils-&gt;Config</title>
+<path fill="none" stroke="#fe0300" d="M2430.64,-222.544C2424.08,-220.004 2416.87,-217.571 2410,-216 2188.49,-165.324 1914.94,-161.487 1806.02,-162.228"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="1805.66,-158.731 1795.69,-162.316 1805.72,-165.731 1805.66,-158.731"></polygon>
+</g>
+<!-- Crypto -->
+<g id="node90" class="node"><title>Crypto</title>
+<ellipse fill="none" stroke="black" cx="2352" cy="-162" rx="37.293" ry="18"></ellipse>
+<text text-anchor="middle" x="2352" y="-157.8" font-family="Times,serif" font-size="14.00">Crypto</text>
+</g>
+<!-- Utils&#45;&gt;Crypto -->
+<g id="edge114" class="edge"><title>Utils-&gt;Crypto</title>
+<path fill="none" stroke="#fe0300" d="M2434.81,-219.834C2419.68,-209.446 2398.32,-194.787 2381.08,-182.958"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2382.72,-179.841 2372.5,-177.068 2378.76,-185.612 2382.72,-179.841"></polygon>
+</g>
+<!-- Winstom -->
+<g id="node92" class="node"><title>Winstom</title>
+<ellipse fill="none" stroke="black" cx="2454" cy="-162" rx="46.1659" ry="18"></ellipse>
+<text text-anchor="middle" x="2454" y="-157.8" font-family="Times,serif" font-size="14.00">Winstom</text>
+</g>
+<!-- Utils&#45;&gt;Winstom -->
+<g id="edge116" class="edge"><title>Utils-&gt;Winstom</title>
+<path fill="none" stroke="#fe0300" d="M2454,-215.697C2454,-207.983 2454,-198.712 2454,-190.112"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2457.5,-190.104 2454,-180.104 2450.5,-190.104 2457.5,-190.104"></polygon>
+</g>
+<!-- Path -->
+<g id="node95" class="node"><title>Path</title>
+<ellipse fill="none" stroke="black" cx="2547" cy="-162" rx="28.3062" ry="18"></ellipse>
+<text text-anchor="middle" x="2547" y="-157.8" font-family="Times,serif" font-size="14.00">Path</text>
+</g>
+<!-- Utils&#45;&gt;Path -->
+<g id="edge120" class="edge"><title>Utils-&gt;Path</title>
+<path fill="none" stroke="#fe0300" d="M2471.93,-219.503C2485.92,-208.978 2505.53,-194.216 2521.2,-182.42"></path>
+<polygon fill="#fe0300" stroke="#fe0300" points="2523.55,-185.028 2529.44,-176.218 2519.34,-179.435 2523.55,-185.028"></polygon>
+</g>
+</g>
+</svg>
