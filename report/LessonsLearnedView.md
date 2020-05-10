@@ -49,8 +49,12 @@ Monitoring is about more than looking at the speed or usage of a system. Merely 
 
 ## Reflection
 
+We never had a big focus on Operations before, but in this project it has been a major focus, and hence we have learned a lot about it and applied tools to help with Operations. In particular we ended up actually getting to deploy our code, which is rarely done in other courses.
 
+Secondly we have seen just how much our CI/CD pipeline could provide for us, as developers. It provided confidence in the code we wrote, and it relieved us of a lot of work with many DevOps aspects such that we could focus on other matters. Some configuration and "it just works".
 
-* Never had a big focus on operations before (we deployed it).
-* CI/CD allows us, as developers, to almost. forget about the operations aspect. It just works
-* Focus on writing maintainable code.
+Monitoring also has proved useful as a means of getting a better and more systemized overview of how the project has worked while it was in production. It also helps more quickly solve potential issues as they arise.
+
+Finally, in regular projects, writing maintainable and extendable code is of course good practice. However in this course and this project writing maintainable code appeared as a must. With a constant rolling out of new builds it became important to be able to maintain and extend them on the fly in anticipation of new features or likewise new implementations.
+
+We will be keeping all these learnings in mind for the future.
